@@ -21,7 +21,9 @@ ConnectToMyMongoDB() ;
 appServer.use( express.json() ) ;
 
 
+// Mount the router to handle the multiple /Root requests
 
+appServer.use( '/root', theRouter ) ;
 
 
 

@@ -1,0 +1,51 @@
+import mongoose, { Schema } from "mongoose";
+
+
+export interface userI {
+
+    name : string ,
+
+    email : string,
+
+    password : string
+
+}
+
+const userSchema = new Schema( 
+    {
+ 
+        name: {
+            
+            type: String,
+
+            require: true,
+
+            trim: true,
+
+        },
+        email: {
+
+            type: String,
+
+            require: true,
+
+            trim: true ,
+
+            unique: true
+
+        },
+        password: {
+
+            type: String,
+
+            require: true,
+
+            trim: true
+
+        }
+
+    }
+) ;
+
+
+export const mongooseUser = mongoose.model<userI>('UserModelCollection', userSchema) ;
