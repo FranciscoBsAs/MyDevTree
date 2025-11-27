@@ -6,20 +6,20 @@ import { HashingThePassword } from "../authentications/AuthPassword";
 
 import slug from "slug";
 import { errorsMessagesArray } from "../sharedContent/messages/ErorrsMessages";
-
+import { sucessMessagesArray } from "../sharedContent/messages/SucessMessages";
 
 
 export const CreateAccount = async ( req : Request , res : Response ) => {
 
     console.log( '\nPOST Method => From /register via THUNDER CLIENT in VSC \n' )
-    
+
     // Destructuring and extraction of the data sent by the client
 
     const email : string = req.body.email ;
 
     const password : string = req.body.password
-    
 
+    const handleProfileAlias : string =  req.body.handleProfileAlias
 
     console.log( email ) ;
 
@@ -58,18 +58,29 @@ export const CreateAccount = async ( req : Request , res : Response ) => {
 
         // Optimizado:  userToAdd.password = await HashingThePassword( password ) ;
 
-        //Corto aca
+        // Clean the handleProfileAlias into a friendly URL
+
+        const cleanHandleProfileAlias : string = slug( handleProfileAlias, '' ) ;
+
+        if( cleanHandleProfileAlias ){
+
+            const cleanHP_AlreadyExist = await mongooseUser.findOne( { handleProfileAlias: cleanHandleProfileAlias } ) ;
 
 
+            return res.status(409).json( { error: errorsMessagesArray.userAlreadyExists('handleProfileAlias').message} )
 
-        //Fin de corte aca
+        }
 
+        userToAdd.handleProfileAlias = cleanHandleProfileAlias
 
+        console.log( slug(handleProfileAlias, '') );
+
+        //userToAdd.handleProfileAlias = slug( handleProfileAlias, '' )
 
     await userToAdd.save() ;
 
     
-    res.status(201).json( { messageSucess: "Register has been created correctly" } ) ;
+    res.status(201).json( { messageSucess: sucessMessagesArray.registerCorrect } ) ;
 
 
 }

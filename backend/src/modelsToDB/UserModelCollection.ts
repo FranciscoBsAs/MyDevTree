@@ -7,7 +7,9 @@ export interface userI {
 
     email : string,
 
-    password : string
+    password : string ,
+
+    handleProfileAlias : string ,
 
 }
 
@@ -18,7 +20,7 @@ const userSchema = new Schema(
             
             type: String,
 
-            require: true,
+            required: true,
 
             trim: true,
 
@@ -27,20 +29,33 @@ const userSchema = new Schema(
 
             type: String,
 
-            require: true,
+            required: true,
 
             trim: true ,
 
-            unique: true
+            unique: true,
+
+            lowercase: true
 
         },
         password: {
 
             type: String,
 
-            require: true,
+            required: true,
 
             trim: true
+
+        },
+        handleProfileAlias: {
+
+            type: String,
+
+            required: true,
+            
+            trim: true,
+
+            unique: true
 
         }
 
