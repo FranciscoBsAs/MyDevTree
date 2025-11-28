@@ -8,10 +8,31 @@ import slug from "slug";
 import { errorsMessagesArray } from "../sharedContent/messages/ErorrsMessages";
 import { sucessMessagesArray } from "../sharedContent/messages/SucessMessages";
 
+import { validationResult } from 'express-validator'
+
 
 export const CreateAccount = async ( req : Request , res : Response ) => {
 
     console.log( '\nPOST Method => From /register via THUNDER CLIENT in VSC \n' )
+
+
+    // Handle router POST request validations errors
+
+    let errorsFromRouter_POST = validationResult( req ) ;   // the validation results from the router
+
+    console.log( errorsFromRouter_POST ) ;
+
+    if( !errorsFromRouter_POST.isEmpty() ) {
+
+        return res.status(400).json( 
+            { 
+                errorsDescription: errorsFromRouter_POST.array()
+            }
+        );
+
+    }
+    return 
+
 
     // Destructuring and extraction of the data sent by the client
 
@@ -23,16 +44,11 @@ export const CreateAccount = async ( req : Request , res : Response ) => {
 
     console.log( email ) ;
 
-
     const userExists : userI = await mongooseUser.findOne( { email: email } ) ;
-
-    //console.log("User already exist\n" + userExists ) ;
-
-    //if( userExists ) console.log( `Este usario con email ${userExists.email} ya existe en la BD` ) ;
 
     if( userExists ) {
 
-        //const errorAlreadyExists = new Error( errorsMessagesArray.userAlreadyExists() ) ;
+        // console.log( `Este usario con email ${userExists.email} ya existe en la BD` ) ;
 
         return res.status(409).json( { error: errorsMessagesArray.userAlreadyExists().message } ) ;
 

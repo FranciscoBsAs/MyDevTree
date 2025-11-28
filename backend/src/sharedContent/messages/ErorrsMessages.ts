@@ -1,3 +1,7 @@
+import { ErrorMessage } from "express-validator/lib/base"
+import { Error } from "mongoose"
+
+
 export const errorsMessagesArray = {
 
     userAlreadyExists( word : string | void ) : Error {
@@ -8,8 +12,28 @@ export const errorsMessagesArray = {
     
     ,
 
+    notEmptyFieldFromPOST( userField : string ) : ErrorMessage  {
+        
+        
+        const error_EmptyField = new Error( `The ${ userField } cannot be empty` )
+        
+        return error_EmptyField.message
 
+    }
+    
+    ,
+    
+    invalidField( userField : string ) : ErrorMessage {
 
+        const error_InvalidField = new Error( `The ${ userField } is invalid` )
+
+        return error_InvalidField.message
+
+    }
+
+    ,
+
+    passwordLength: 'the password length has to be between 8 and 20 characters'
 
 
 }

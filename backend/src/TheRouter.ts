@@ -3,6 +3,10 @@ import { mongooseUser } from './modelsToDB/UserModelCollection';
 import { Document } from 'mongoose';
 import { CreateAccount } from './handlers/HandleRequests';
 
+import { body } from 'express-validator';
+import { errorsMessagesArray } from './sharedContent/messages/ErorrsMessages';
+
+
 const theRouter = Router() ;
 
 
@@ -28,8 +32,21 @@ theRouter.get( '/auth/register', ( req, res ) => {
 
 } ) ;
 
+// Simula formularios fabricados con React
+theRouter.post( '/auth/register',
 
-theRouter.post( '/auth/register', CreateAccount   // Simula formularios fabricados con React
+    body('handleProfileAlias').notEmpty().withMessage( errorsMessagesArray.notEmptyFieldFromPOST('handleProfileAlias') )
+    ,
+    body('name').notEmpty().withMessage(errorsMessagesArray.notEmptyFieldFromPOST('name'))
+    ,
+    body('email')
+                .notEmpty().withMessage( errorsMessagesArray.notEmptyFieldFromPOST('email') )
+                .isEmail().withMessage( errorsMessagesArray.invalidField('email') )
+    ,
+    body('password').isLength({ min: 8, max: 20 }).withMessage( errorsMessagesArray.passwordLength )
+    ,
+
+    CreateAccount
 
 
  ) ;
