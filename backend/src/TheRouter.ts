@@ -1,7 +1,7 @@
 import { Router } from 'express'
 import { mongooseUser } from './modelsToDB/UserModelCollection';
 import { Document } from 'mongoose';
-import { CreateAccount } from './handlers/HandleRequests';
+import { CreateAccount, LoginUserAccount } from './handlers/HandleRequests';
 
 import { body } from 'express-validator';
 import { errorsMessagesArray } from './sharedContent/messages/ErorrsMessages';
@@ -49,7 +49,21 @@ theRouter.post( '/auth/register',
     CreateAccount
 
 
- ) ;
+) ;
+
+
+theRouter.post( '/auth/login',
+
+    body('email')
+                .notEmpty().withMessage( errorsMessagesArray.notEmptyFieldFromPOST('email') )
+                .isEmail().withMessage( errorsMessagesArray.invalidField('email') )
+    ,
+    body('password').notEmpty().withMessage( errorsMessagesArray.fieldRequiredFormat('password'))
+    ,
+
+    LoginUserAccount
+
+)
 
 
 

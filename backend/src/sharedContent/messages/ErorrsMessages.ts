@@ -35,5 +35,21 @@ export const errorsMessagesArray = {
 
     passwordLength: 'the password length has to be between 8 and 20 characters'
 
+    ,
+
+    fieldRequiredFormat( userField : string ) : ErrorMessage {
+
+        const error_FieldRequiredFormat = new Error( `The ${userField} has a required format` )
+
+        return error_FieldRequiredFormat.message
+
+    }
+
+    ,
+
+    userNotFound: new Error('The email is not registred to any user')
+
+
+
 
 }

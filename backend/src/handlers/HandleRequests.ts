@@ -30,8 +30,7 @@ export const CreateAccount = async ( req : Request , res : Response ) => {
             }
         );
 
-    }
-    return 
+    } 
 
 
     // Destructuring and extraction of the data sent by the client
@@ -97,6 +96,46 @@ export const CreateAccount = async ( req : Request , res : Response ) => {
 
     
     res.status(201).json( { messageSucess: sucessMessagesArray.registerCorrect } ) ;
+
+
+}
+
+
+
+export const LoginUserAccount = async ( req : Request , res : Response  ) => {
+
+    console.log( 'Desde login...' )
+
+    // Handle router POST request validations errors, for login
+
+    let errorsFromRouter_POST = validationResult( req ) ;
+
+    if( !errorsFromRouter_POST.isEmpty() ) {
+
+        return res.status(400).json(
+            {
+                errorsDescription: errorsFromRouter_POST.array()
+            }
+        )
+
+    }
+
+
+    const email : string = req.body.email ;
+
+    const password : string = req.body.password ;
+
+
+    const userIsLogged : userI = await mongooseUser.findOne({ email }) ;
+
+    if( !userIsLogged ) {
+
+        return res.status(404).json(
+            {
+                errorFound: errorsMessagesArray.userNotFound.message
+            }
+        )
+    }
 
 
 }
