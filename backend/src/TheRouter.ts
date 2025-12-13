@@ -5,6 +5,7 @@ import { CreateAccount, LoginUserAccount } from './handlers/HandleRequests';
 
 import { body } from 'express-validator';
 import { errorsMessagesArray } from './sharedContent/messages/ErorrsMessages';
+import { HandleInputErrors } from './middleware/ValidationsMiddleware';
 
 
 const theRouter = Router() ;
@@ -46,6 +47,9 @@ theRouter.post( '/auth/register',
     body('password').isLength({ min: 8, max: 20 }).withMessage( errorsMessagesArray.passwordLength )
     ,
 
+    HandleInputErrors
+    ,
+
     CreateAccount
 
 
@@ -61,10 +65,12 @@ theRouter.post( '/auth/login',
     body('password').notEmpty().withMessage( errorsMessagesArray.fieldRequiredFormat('password'))
     ,
 
+    HandleInputErrors
+    ,
+
     LoginUserAccount
 
 )
-
 
 
 export default theRouter
