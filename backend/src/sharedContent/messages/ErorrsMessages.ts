@@ -6,7 +6,7 @@ export const errorsMessagesArray = {
 
     userAlreadyExists( word : string | void ) : Error {
         
-        return new Error( `This ${ word  ?  word  :  'user' } is already registred` )
+        return new Error( `This ${ word  ?  word  :  'user' } is already registered` )
 
     }
     
@@ -33,7 +33,7 @@ export const errorsMessagesArray = {
 
     ,
 
-    passwordLength: 'the password length has to be between 8 and 20 characters'
+    passwordLength: 'The password length has to be between 8 and 20 characters'
 
     ,
 
@@ -47,8 +47,11 @@ export const errorsMessagesArray = {
 
     ,
 
-    userNotFound: new Error('The email is not registred to any user')
+    userNotFound: new Error('The email is not registered to any user')
 
+    ,
+
+    unmatchedPassword: new Error('The password does not match the provided email') 
 
 
 
