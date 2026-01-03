@@ -1,6 +1,5 @@
 import mongoose, { Schema } from "mongoose";
 
-
 export interface userI {
 
     name : string ,
@@ -12,6 +11,7 @@ export interface userI {
     handleProfileAlias : string ,
 
 }
+
 
 const userSchema = new Schema( 
     {
