@@ -1,0 +1,57 @@
+import { ErrorMessage } from "express-validator/lib/base"
+import { Error } from "mongoose"
+
+
+export const errorsMessagesArray = {
+
+    userAlreadyExists( word : string | void ) : Error {
+        
+        return new Error( `This ${ word  ?  word  :  'user' } is already registered` )
+
+    }
+    
+    ,
+
+    notEmptyFieldFromPOST( userField : string ) : ErrorMessage  {
+        
+        
+        const error_EmptyField = new Error( `The ${ userField } cannot be empty` )
+        
+        return error_EmptyField.message
+
+    }
+    
+    ,
+    
+    invalidField( userField : string ) : ErrorMessage {
+
+        const error_InvalidField = new Error( `The ${ userField } is invalid` )
+
+        return error_InvalidField.message
+
+    }
+
+    ,
+
+    passwordLength: 'The password length has to be between 8 and 20 characters'
+
+    ,
+
+    fieldRequiredFormat( userField : string ) : ErrorMessage {
+
+        const error_FieldRequiredFormat = new Error( `The ${userField} has a required format` )
+
+        return error_FieldRequiredFormat.message
+
+    }
+
+    ,
+
+    userNotFound: new Error('The email is not registered to any user')
+
+    ,
+
+    unmatchedPassword: new Error('The password does not match the provided email') 
+
+
+}
