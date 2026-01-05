@@ -53,3 +53,20 @@ o  Use rolldown-vite (Experimental)?:
 o  Install with npm and start now?
 |  No
 
+
+## Extensions for VSC
+
+    Tailwind CSS IntelliSense
+
+    Simple React Snippets
+
+
+## Front End installed dependencies
+
+
+    npm install -D tailwindcss@3 postcss autoprefixer
+
+        npx tailwindcss init -p
+
+
+    npm install react-router-dom
