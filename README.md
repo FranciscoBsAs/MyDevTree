@@ -32,3 +32,22 @@ o  Use rolldown-vite (Experimental)?:
 o  Install with npm and start now?
 |  No
 
+
+
+## Extensions for VSC
+
+    Tailwind CSS IntelliSense
+
+    Simple React Snippets
+
+
+## Front End installed dependencies
+
+    npm i -D tailwindcss@3 postcss autoprefixer
+
+        npx taiwindcss init -p
+
+
+    npm i react-router-dom
+
+    npm i react-hook-form
