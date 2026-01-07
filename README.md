@@ -70,3 +70,6 @@ o  Install with npm and start now?
 
 
     npm install react-router-dom
+
+
+    npm install react-hook-form
