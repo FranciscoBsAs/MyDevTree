@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom' ;
+import AuthLayout from './layouts/AuthLayout';
 
 
 export default function TheRouter () {
@@ -9,10 +10,10 @@ export default function TheRouter () {
 
             <Routes>
 
-                <Route>
+                <Route element={ <AuthLayout></AuthLayout> } >
 
                     <Route></Route>
-                    
+
                     <Route></Route>
 
                 </Route>
