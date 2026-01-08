@@ -2,7 +2,7 @@ import { mongooseUser, userI } from "../modelsToDB/UserModelCollection" ;
 import type { Request, Response } from 'express' ;
 import { CheckTheRespectivePassword, HashingThePassword } from "../authentications/AuthPassword";
 import slug from "slug";
-import { errorsMessagesArray } from "../sharedContent/messages/ErorrsMessages";
+import { errorsMessagesObject } from "../sharedContent/messages/ErorrsMessages";
 import { sucessMessagesArray } from "../sharedContent/messages/SucessMessages";
 
 
@@ -18,7 +18,7 @@ export const CreateAccount = async ( req : Request , res : Response ) => {
 
     const userExists : userI = await mongooseUser.findOne( { email: email } ) ;
 
-    if( userExists ) return res.status(409).json( { error: errorsMessagesArray.userAlreadyExists().message } ) ;
+    if( userExists ) return res.status(409).json( { error: errorsMessagesObject.userAlreadyExists().message } ) ;
 
 
 
@@ -32,7 +32,7 @@ export const CreateAccount = async ( req : Request , res : Response ) => {
 
         const cleanHPA_AlreadyExist = await mongooseUser.findOne( { handleProfileAlias: cleanHandleProfileAlias } ) ;
         
-        if( cleanHPA_AlreadyExist ) return res.status(409).json( { error: errorsMessagesArray.userAlreadyExists('handleProfileAlias').message } )
+        if( cleanHPA_AlreadyExist ) return res.status(409).json( { error: errorsMessagesObject.userAlreadyExists('handleProfileAlias').message } )
 
 
         userToAdd.handleProfileAlias = cleanHandleProfileAlias ;
@@ -61,7 +61,7 @@ export const LoginUserAccount = async ( req : Request , res : Response  ) => {
 
         return res.status(404).json(
             {
-                errorFound: errorsMessagesArray.userNotFound.message
+                errorFound: errorsMessagesObject.userNotFound.message
             }
         )
     }
@@ -74,7 +74,7 @@ export const LoginUserAccount = async ( req : Request , res : Response  ) => {
 
         return res.status(401).json(
             {
-                errorPassword: errorsMessagesArray.unmatchedPassword.message
+                errorPassword: errorsMessagesObject.unmatchedPassword.message
             }
         )
 

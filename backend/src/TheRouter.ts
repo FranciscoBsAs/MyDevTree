@@ -2,7 +2,7 @@ import { Router } from 'express'
 
 import { CreateAccount, LoginUserAccount } from './handlers/HandleRequests';
 import { body } from 'express-validator';
-import { errorsMessagesArray } from './sharedContent/messages/ErorrsMessages';
+import { errorsMessagesObject } from './sharedContent/messages/ErorrsMessages';
 import { HandleInputErrors } from './middleware/ValidationsMiddleware';
 
 
@@ -33,15 +33,15 @@ theRouter.get( '/auth/register', ( req, res ) => {
 
 theRouter.post( '/auth/register',
 
-    body('handleProfileAlias').notEmpty().withMessage( errorsMessagesArray.notEmptyFieldFromPOST('handleProfileAlias') )
+    body('handleProfileAlias').notEmpty().withMessage( errorsMessagesObject.notEmptyFieldFromPOST('handleProfileAlias') )
     ,
-    body('name').notEmpty().withMessage(errorsMessagesArray.notEmptyFieldFromPOST('name'))
+    body('name').notEmpty().withMessage(errorsMessagesObject.notEmptyFieldFromPOST('name'))
     ,
     body('email')
-                .notEmpty().withMessage( errorsMessagesArray.notEmptyFieldFromPOST('email') )
-                .isEmail().withMessage( errorsMessagesArray.invalidField('email') )
+                .notEmpty().withMessage( errorsMessagesObject.notEmptyFieldFromPOST('email') )
+                .isEmail().withMessage( errorsMessagesObject.invalidField('email') )
     ,
-    body('password').isLength({ min: 8, max: 20 }).withMessage( errorsMessagesArray.passwordLength )
+    body('password').isLength({ min: 8, max: 20 }).withMessage( errorsMessagesObject.passwordLength )
     ,
 
     HandleInputErrors
@@ -55,10 +55,10 @@ theRouter.post( '/auth/register',
 theRouter.post( '/auth/login',
 
     body('email')
-                .notEmpty().withMessage( errorsMessagesArray.notEmptyFieldFromPOST('email') )
-                .isEmail().withMessage( errorsMessagesArray.invalidField('email') )
+                .notEmpty().withMessage( errorsMessagesObject.notEmptyFieldFromPOST('email') )
+                .isEmail().withMessage( errorsMessagesObject.invalidField('email') )
     ,
-    body('password').notEmpty().withMessage( errorsMessagesArray.fieldRequiredFormat('password'))
+    body('password').notEmpty().withMessage( errorsMessagesObject.fieldRequiredFormat('password'))
     ,
 
     HandleInputErrors
