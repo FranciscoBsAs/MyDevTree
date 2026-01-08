@@ -2,7 +2,7 @@ import { ErrorMessage } from "express-validator/lib/base"
 import { Error } from "mongoose"
 
 
-export const errorsMessagesArray = {
+export const errorsMessagesObject = {
 
     userAlreadyExists( word : string | void ) : Error {
         
