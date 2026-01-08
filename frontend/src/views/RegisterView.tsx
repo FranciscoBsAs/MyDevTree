@@ -2,9 +2,14 @@ import { Link } from "react-router-dom" ;
 import { useForm } from "react-hook-form";
 import { ErrorMessageComponent } from "../components/ErrorMessageComponent";
 import type { userRegisterFrontI } from "../interfaces/UserInterfaces";
+<<<<<<< HEAD
 import { errorsMessageObj } from "../sharedFrontContent/messagesArray/FrontErrorsMessage";
 
 
+=======
+import { errorsMessageObj } from "../sharedFrontContent/messagesArray/FrontErrorsMessages";
+
+>>>>>>> 52e9c0c (feature: add error messages handling in registration form using errorsMessageObj for validation)
 export default function RegisterView () {
 
 
