@@ -25,6 +25,9 @@ export default function RegisterView () {
     if(errors) console.error( errors ) ;
 
 
+    const inputPassword : string = watch('password') ;
+
+
     const handleRegister = ( inputFormData : userRegisterFrontI ) => {
         console.log( 'Desde handleRegister' )
     }
@@ -145,7 +148,12 @@ export default function RegisterView () {
                     id="password_confirmation"
                     placeholder="Password"
                     { ...register( 'password_confirmation', {
-                        required: errorsMessageObj.required('password confirmation')
+                        required: errorsMessageObj.required('password confirmation'),
+                        validate: (inputValue) => (
+                          inputValue === inputPassword 
+                                        ? true 
+                                        : errorsMessageObj.notTheSamePassword
+                        )
                     } ) }
                 />
 
