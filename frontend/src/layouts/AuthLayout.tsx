@@ -9,7 +9,7 @@ export default function AuthLayout () {
 
         <div className="bg-slate-700 min-h-screen">
 
-            <Toaster position="top-center"/>
+            <Toaster position="top-right"/>
 
             <div className=' bg-slate-800 h-16 flex items-center'>
 
