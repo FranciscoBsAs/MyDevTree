@@ -4,8 +4,8 @@ import { ErrorMessageComponent } from "../components/ErrorMessageComponent";
 import type { userRegisterFrontI } from "../interfaces/UserInterfaces";
 import { errorsMessageObj } from "../sharedFrontContent/messagesArray/FrontErrorsMessages";
 import axios, { isAxiosError } from "axios";
-import APIaxiosInstance from "../configConnection/AxiosInstance";
 import { toastService } from "../sharedFrontContent/alertToasts/ToastService";
+import APIaxiosInstance from "../configConnection/AxiosInstance";
 
 
 
@@ -23,7 +23,7 @@ export default function RegisterView () {
   }
 
 
-  const { register, watch, handleSubmit, reset, formState: {errors} } = useForm< userRegisterFrontI >( { defaultValues: initialValues } ) ;
+  const { register, watch, handleSubmit, formState: {errors}, reset } = useForm< userRegisterFrontI >( { defaultValues: initialValues } ) ;
 
 
 
@@ -174,7 +174,7 @@ export default function RegisterView () {
                         } ) }
                     />
 
-                    { errors.password_confirmation && <ErrorMessageComponent> { errors.password_confirmation.message } </ErrorMessageComponent> }
+                    { errors.password_confirmation && <ErrorMessageComponent> { errors.password_confirmation?.message } </ErrorMessageComponent> }
               
                 </div>
 
