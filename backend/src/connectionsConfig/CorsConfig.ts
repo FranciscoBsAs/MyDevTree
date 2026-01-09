@@ -1,7 +1,7 @@
 import { CorsOptions } from 'cors'
 
 
-const allowedOrigins = ['http://localhost:5173', 'http://localhost:5173/'];     // white list
+const allowedOrigins = [process.env.MEMPHIS_URL1, process.env.MEMPHIS_URL2];     // white list
 
 
 
@@ -11,7 +11,7 @@ export const CORSconfig : CorsOptions = {
 
         if( !origin || allowedOrigins.includes(origin) ) callback(null, true) ;
 
-        else callback( new Error('CORS Error, no authorize connecction') ) ;
+        else callback( new Error('CORS Error happend, no authorize connecction') ) ;
 
     }
 
