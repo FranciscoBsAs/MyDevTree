@@ -43,7 +43,7 @@ export const CreateAccount = async ( req : Request , res : Response ) => {
 
         const cleanHPA_AlreadyExist = await mongooseUser.findOne( { handleProfileAlias: cleanHandleProfileAlias } ) ;
         
-        if( cleanHPA_AlreadyExist ) return res.status(409).json( { error: errorsMessagesArray.userAlreadyExists('handleProfileAlias').message} )
+        if( cleanHPA_AlreadyExist ) return res.status(409).json( { error: errorsMessagesArray.userAlreadyExists('Handle Profile Alias').message} )
 
 
         userToAdd.handleProfileAlias = cleanHandleProfileAlias ;
