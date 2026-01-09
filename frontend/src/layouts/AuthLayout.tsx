@@ -18,12 +18,6 @@ export default function AuthLayout () {
                     <h1 className="text-white">Dev Tree web site</h1>
                 </div>
 
-                {/*
-                <div className="py-9">
-                </div>
-                
-                */}
-
             </div>
 
             <Outlet/>
