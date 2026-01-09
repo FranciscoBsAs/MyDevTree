@@ -16,33 +16,31 @@ export default function AuthLayout () {
                             items-center' 
             >
 
-                <div 
+                <div
                     className=' max-w-7x1 
                                 mx-auto 
                                 px-5    
                                 h-full    
                                 flex     
-                                items-center'
+                                items-center
+                                
+                                justify-between
+                                gap-4
+                    '// justify-between is the horizontal alination for the elements contended 
                 >
 
-                    <img
-                        src='/myDevTree_Logo.jpg' 
-                        alt='Logotipo de MyDevTree' 
-                        className='h-14'
-                    >
-                    </img>
-                
-                </div>
+                    <img src='/myDevTree_Logo.jpg' alt='Logotipo de MyDevTree' className='h-14'></img>
 
-                <div className='py-9 ' >
                     <h1 className='text-white' >
                         Hi from Login-View 
                     </h1>
+                
                 </div>
+
 
             </div>
 
-                <Outlet></Outlet>
+            <Outlet></Outlet>
 
         </div>
 
