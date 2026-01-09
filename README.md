@@ -1,14 +1,21 @@
 # dependencies install (backend):
 
-npm i express ;
+    npm i express ;
 
 
 
-npm i bcrypt ; npm i -D @types/bcrypt
+    npm i bcrypt ; npm i -D @types/bcrypt
 
-npm i slug ; npm i --save-dev @types/slug
+    npm i slug ; npm i --save-dev @types/slug
 
-npm i express-validator
+    npm i express-validator
+
+
+    npm install cors 
+
+        npm i -D @types/cors
+        
+            npm audit fix
 
 
 ## to make the front end
@@ -50,4 +57,12 @@ o  Install with npm and start now?
 
     npm i react-router-dom
 
-    npm i react-hook-form
+
+    npm install react-hook-form
+
+
+    npm install axios
+        
+        npm audit fix
+
+    npm install react-hot-toast
