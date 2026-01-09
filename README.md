@@ -18,6 +18,15 @@
             npm audit fix
 
 
+    npm i jsonwebtoken
+
+    npm i -D @types/jsonwebtoken
+
+        npm audit fix --force
+
+
+
+
 ## to make the front end
 
 terminal de Windows (cmd), cd .. * 2
@@ -66,3 +75,9 @@ o  Install with npm and start now?
         npm audit fix
 
     npm install react-hot-toast
+
+
+    npm i @heroicons/react
+
+
+    npm i -D @tailwindcss/forms
