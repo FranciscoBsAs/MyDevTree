@@ -3,8 +3,9 @@ import { useForm } from "react-hook-form";
 import { ErrorMessageComponent } from "../components/ErrorMessageComponent";
 import type { userRegisterFrontI } from "../interfaces/UserInterfaces";
 import { errorsMessageObj } from "../sharedFrontContent/messagesArray/FrontErrorsMessages";
-import axios from "axios";
+import axios, { isAxiosError } from "axios";
 import { ToastService } from "../sharedFrontContent/alertToasts/ToastService";
+import APIaxiosInstance from "../configConnection/AxiosInstance";
 
 
 
@@ -22,7 +23,7 @@ export default function RegisterView () {
   }
 
 
-  const { register, watch, handleSubmit, formState: {errors} } = useForm< userRegisterFrontI >( { defaultValues: initialValues } ) ;
+  const { register, watch, handleSubmit, formState: {errors}, reset } = useForm< userRegisterFrontI >( { defaultValues: initialValues } ) ;
 
 
   //if(errors) console.error( errors ) ;
@@ -35,7 +36,7 @@ export default function RegisterView () {
 
     try {
 
-      const response = await axios.post('http://localhost:4000/Root/auth/register', inputFormData ) ;
+      const response = await axios.post(`${APIaxiosInstance}/Root/auth/register`, inputFormData ) ;
 
       // const {data} = await axios.post('http://localhost:4000/Root/auth/register', inputFormData ) ;
 
@@ -44,10 +45,12 @@ export default function RegisterView () {
       const data = response.data.messageSucess ;
 
       if(data) ToastService.success( data ) ;
+
+      reset() ;
       
-    } catch (error) {
-      
-      ToastService.error( error )
+    } catch (theError) {
+
+        if( isAxiosError(theError) && theError.response ) ToastService.error( theError.response.data.error ) ;
 
     }
 
@@ -178,7 +181,7 @@ export default function RegisterView () {
                         } ) }
                     />
 
-                    { errors.password_confirmation && <ErrorMessageComponent> { errors.password_confirmation.message } </ErrorMessageComponent> }
+                    { errors.password_confirmation && <ErrorMessageComponent> { errors.password_confirmation?.message } </ErrorMessageComponent> }
               
                 </div>
 
