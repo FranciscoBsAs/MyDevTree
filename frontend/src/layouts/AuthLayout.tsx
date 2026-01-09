@@ -16,7 +16,22 @@ export default function AuthLayout () {
                 <div className="max-w-7x1 mx-auto px-5 h-full flex items-center  justify-between gap-4">
                     <img src="/myDevTree_Logo.jpg" alt="Logotipo MyDevTree" className="h-14" ></img>
                     <h1 className="text-white">Dev Tree web site</h1>
+                    <div
+                        className=' max-w-7x1 mx-auto px-5 h-full flex items-center  justify-between gap-4'
+                    >
+
+                        <img src='/myDevTree_Logo.jpg' alt='Logotipo de MyDevTree' className='h-14'></img>
+
+                        <h1 className='text-white' >
+                            Hi from Login-View 
+                        </h1>
+                    
+                    </div>
+
                 </div>
+
+
+
 
             </div>
 
