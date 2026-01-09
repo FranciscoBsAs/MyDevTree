@@ -8,7 +8,7 @@ export interface userFrontI {
 }
 
 
-export interface userRegisterFrontI extends Pick< userFrontI, 'name' | 'email' | 'handleProfileAlias' | 'password' > {
+export interface userRegisterFrontI extends userFrontI {
 
     password_confirmation : string
 
