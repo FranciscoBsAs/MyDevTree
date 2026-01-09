@@ -1,4 +1,5 @@
 import { Outlet } from 'react-router-dom'
+import { Toaster } from 'react-hot-toast'
 
 
 export default function AuthLayout () {
@@ -6,6 +7,8 @@ export default function AuthLayout () {
     return(
 
         <div className=" bg-slate-700 min-h-screen " >
+
+            <Toaster position="top-center"/>
 
             <div 
                 className=' bg-slate-800 
