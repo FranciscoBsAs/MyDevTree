@@ -34,7 +34,7 @@ export default function RegisterView () {
 
     try {
 
-      const {data} = await axios.post('http://localhost:4000/Root/auth/register', inputFormData ) ;
+      const {data} = await axios.post(`${APIaxiosInstance}/root/auth/register`, inputFormData ) ;
 
 
       if(data) toastService.success( data.messageSuces ) ;
@@ -96,7 +96,7 @@ export default function RegisterView () {
                     <label htmlFor="email" className="text-1xl text-slate-500">Email</label>
 
                     <input
-                        type="text"
+                        type="email"
                         className="bg-slate-100 border-none p-2 rounded-lg placeholder-slate-400"
                         id="email"
                         placeholder="Email"
@@ -104,7 +104,7 @@ export default function RegisterView () {
                             required: errorsMessageObj.required('email'),
                             pattern: {
                                 value: /\S+@\S+\.\S+/,
-                                message: "Email format is invalid"
+                                message: errorsMessageObj.format
                             }
                         } ) }
                     />
