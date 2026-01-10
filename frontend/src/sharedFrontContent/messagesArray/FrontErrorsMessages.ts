@@ -5,6 +5,8 @@ export const errorsMessageObj = {
         return `The ${field} is required`
     },
 
+    format: 'Email format is invalid',
+
     notTheSamePassword: "The password are not the same"
 
 }
