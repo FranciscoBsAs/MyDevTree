@@ -14,3 +14,5 @@ export interface userRegisterFrontI extends userFrontI {
 
 }
 
+
+export interface userLoginFrontI extends Pick< userFrontI, 'email' | 'password' > {}
