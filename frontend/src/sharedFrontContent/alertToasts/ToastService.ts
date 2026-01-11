@@ -3,7 +3,7 @@ import toast from 'react-hot-toast' ;
 
 export const toastService = {
 
-    success: async ( message : string ) => {
+    success: ( message : string ) => {
 
         toast.success( message ) 
 
