@@ -3,9 +3,9 @@ import { useForm } from "react-hook-form";
 import { ErrorMessageComponent } from "../components/ErrorMessageComponent";
 import type { userRegisterFrontI } from "../interfaces/UserInterfaces";
 import { errorsMessageObj } from "../sharedFrontContent/messagesArray/FrontErrorsMessages";
-import axios from "axios";
-import { ToastService } from "../sharedFrontContent/alertToasts/ToastService";
-
+import axios, { isAxiosError } from "axios";
+import APIaxiosInstance from "../configConnection/AxiosInstance";
+import { toastService } from "../sharedFrontContent/alertToasts/ToastService";
 
 
 
@@ -23,10 +23,8 @@ export default function RegisterView () {
   }
 
 
-  const { register, watch, handleSubmit, formState: {errors} } = useForm< userRegisterFrontI >( { defaultValues: initialValues } ) ;
+  const { register, watch, handleSubmit, reset, formState: {errors} } = useForm< userRegisterFrontI >( { defaultValues: initialValues } ) ;
 
-
-  //if(errors) console.error( errors ) ;
 
 
   const inputPassword : string = watch('password') ;
@@ -36,19 +34,16 @@ export default function RegisterView () {
 
     try {
 
-      const response = await axios.post('http://localhost:4000/Root/auth/register', inputFormData ) ;
+      const {data} = await axios.post('http://localhost:4000/Root/auth/register', inputFormData ) ;
 
-      // const {data} = await axios.post('http://localhost:4000/Root/auth/register', inputFormData ) ;
 
-      //if( response )console.log(response)
+      if(data) toastService.success( data.messageSuces ) ;
 
-      const data = response.data.messageSucess ;
-
-      if(data) ToastService.success( data ) ;
+      reset() ;
       
-    } catch (error) {
-      
-      ToastService.error( error )
+    } catch (theError) {
+
+        if( isAxiosError(theError) && theError.response ) toastService.error( theError.response.data.error ) ;
 
     }
 

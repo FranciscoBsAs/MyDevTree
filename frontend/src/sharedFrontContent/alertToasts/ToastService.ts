@@ -1,7 +1,7 @@
 import toast from 'react-hot-toast' ;
 
 
-export const ToastService = {
+export const toastService = {
 
     success: ( message : string ) => {
 
