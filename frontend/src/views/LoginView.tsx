@@ -7,8 +7,8 @@ import { errorsMessageObj } from '../sharedFrontContent/messagesArray/FrontError
 import axios from 'axios'
 import { isAxiosError } from 'axios'
 import APIaxiosInstance from '../configConnection/AxiosInstance'
-import { ToastService } from '../sharedFrontContent/alertToasts/ToastService'
 
+import toastService from '../sharedFrontContent/alertToasts/ToastService'
 
 
 export default function LoginView () {
@@ -20,7 +20,7 @@ export default function LoginView () {
     }
 
 
-    const { register, handleSubmit, formState:{errors}, reset } = useForm( { defaultValues: initialValues } )
+    const { register, handleSubmit, formState:{errors}, reset } = useForm<userLoginFrontI>( { defaultValues: initialValues } )
 
 
     const handleLogin = async ( loginInputData : userLoginFrontI ) => {
@@ -33,14 +33,16 @@ export default function LoginView () {
 
             console.log( data )
 
-            await ToastService.success( data ) ;
+            console.log( "\n", typeof data )
+
+            toastService.success( data ) ;
 
 
             reset() ;
             
         } catch (error) {
 
-            if( isAxiosError(error) && error.response ) ToastService.error( error.response.data.errorPassword || error.response.data.errorFound )
+            if( isAxiosError(error) && error.response ) toastService.error( error.response.data.errorPassword || error.response.data.errorFound )
         
         }
 
