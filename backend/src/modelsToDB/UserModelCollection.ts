@@ -11,6 +11,8 @@ export interface userI {
 
     handleProfileAlias : string ,
 
+    _id? : string
+
 }
 
 const userSchema = new Schema( 
