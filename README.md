@@ -18,6 +18,22 @@
             npm audit fix
 
 
+    npm i jsonwebtoken
+
+
+    npm i -D @types/jsonwebtoken
+
+
+## Command to see the currents rutimes of servers
+
+    tasklist | findstr node
+
+## Command to delete the currents runtimes of servers
+
+    taskkill /IM node.exe /F
+
+
+
 ## to make the front end
 
 terminal de Windows (cmd), cd .. * 2
