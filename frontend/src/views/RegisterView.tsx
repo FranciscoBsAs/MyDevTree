@@ -4,10 +4,10 @@ import { ErrorMessageComponent } from "../components/ErrorMessageComponent";
 import type { userRegisterFrontI } from "../interfaces/UserInterfaces";
 import { errorsMessageObj } from "../sharedFrontContent/messagesArray/FrontErrorsMessages";
 import axios, { isAxiosError } from "axios";
-import { ToastService } from "../sharedFrontContent/alertToasts/ToastService";
 import APIaxiosInstance from "../configConnection/AxiosInstance";
+import toastService from "../sharedFrontContent/alertToasts/ToastService";
 
-
+//import toastService from "../sharedFrontContent/alertToasts/ToastService";
 
 export default function RegisterView () {
 
@@ -44,13 +44,13 @@ export default function RegisterView () {
 
       const data = response.data ;
 
-      if(data) ToastService.success( data.messageSuces ) ;
+      if(data) toastService.success( data.messageSuces ) ;
 
       reset() ;
       
     } catch (theError) {
 
-        if( isAxiosError(theError) && theError.response ) ToastService.error( theError.response.data.error ) ;
+        if( isAxiosError(theError) && theError.response ) toastService.error( theError.response.data.error ) ;
 
     }
 
