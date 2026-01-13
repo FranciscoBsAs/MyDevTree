@@ -1,9 +1,9 @@
 import toast from 'react-hot-toast' ;
 
 
-export const ToastService = {
+const toastService = {
 
-    success: async ( message : string ) => {
+    success( message : string ) {
 
         toast.success( message ) 
 
@@ -23,3 +23,4 @@ export const ToastService = {
 
 }
 
+export default toastService
