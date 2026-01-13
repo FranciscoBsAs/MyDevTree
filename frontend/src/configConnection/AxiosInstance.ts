@@ -1,8 +1,8 @@
 import axios, { type AxiosInstance } from "axios";
 
-const APIaxiosInstance = axios.create(
+const APIaxiosInstance : AxiosInstance = axios.create(
     {
-        baseURL: import.meta.env.VITE_MEMPHIS_BACK
+        baseURL: String(import.meta.env.VITE_MEMPHIS_BACK)
     }
 )
 
