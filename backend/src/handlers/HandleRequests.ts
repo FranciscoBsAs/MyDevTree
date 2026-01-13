@@ -4,6 +4,7 @@ import { CheckTheRespectivePassword, HashingThePassword } from "../authenticatio
 import slug from "slug";
 import { errorsMessagesObject } from "../sharedContent/messages/ErorrsMessages";
 import { sucessMessagesArray } from "../sharedContent/messages/SucessMessages";
+import { generateJWT } from "../authentications/jwt";
 
 
 export const CreateAccount = async ( req : Request , res : Response ) => {
@@ -39,6 +40,8 @@ export const CreateAccount = async ( req : Request , res : Response ) => {
 
 
     await userToAdd.save() ;
+
+    console.log("LOGIN MESSAGE USED:", sucessMessagesArray.loginCorrect);
 
     
     res.status(201).json( { messageSucess: sucessMessagesArray.registerCorrect } ) ;
@@ -79,12 +82,23 @@ export const LoginUserAccount = async ( req : Request , res : Response  ) => {
         )
 
     }
+    
+    const token = generateJWT( {
 
+        id: loggedUser._id
+
+    } ) ;
+
+    
+    
     res.status( 200 ).json({
-
-        sucessLogin: sucessMessagesArray.loginCorrect
-
+        sucessLogin: sucessMessagesArray.loginCorrect ,
+        token: token
     })
+    
+
+    //res.status(200).send( token )
+    
 
 
 }

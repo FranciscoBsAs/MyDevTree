@@ -10,6 +10,8 @@ export interface userI {
 
     handleProfileAlias : string ,
 
+    _id? : string
+
 }
 
 
