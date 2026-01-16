@@ -29,13 +29,14 @@ export default function LoginView () {
 
             const response = await APIaxiosInstance.post(`/root/auth/login` , loginInputData)
 
-            const data = response.data.sucessLogin ;
+            const data = response.data ;
 
-            console.log( data )
+            //const dataToken = data.token ;
 
-            console.log( "\n", typeof data )
+            toastService.success( data.sucessLogin ) ;
 
-            toastService.success( data ) ;
+
+            localStorage.setItem('AUTH_TOKEN', data.token ) ;
 
 
             reset() ;
