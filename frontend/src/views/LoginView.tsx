@@ -3,7 +3,6 @@ import { useForm } from 'react-hook-form' ;
 import type { userLoginFrontI } from '../interfaces/UserInterfaces' ;
 import { ErrorMessageComponent } from '../components/ErrorMessageComponent' ;
 import { errorsMessageObj } from '../sharedFrontContent/messagesArray/FrontErrorsMessages' ;
-import axios from 'axios'
 import { isAxiosError } from 'axios'
 import APIaxiosInstance from '../configConnection/AxiosInstance'
 import { toastService } from '../sharedFrontContent/alertToasts/ToastService';
@@ -29,6 +28,9 @@ export default function LoginView () {
             const {data} = await APIaxiosInstance.post(`/root/auth/login` , loginInputData)
 
             toastService.success( data.sucessLogin ) ;
+
+
+            localStorage.setItem('AUTH_TOKEN', data.token ) ;
 
 
             reset() ;
