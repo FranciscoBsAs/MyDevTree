@@ -103,3 +103,6 @@ o  Install with npm and start now?
         npm audit fix
 
     npm install react-hot-toast
+
+
+    npm i @heroicons/react
