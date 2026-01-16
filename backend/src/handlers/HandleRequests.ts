@@ -102,7 +102,7 @@ export const LoginUserAccount = async ( req : Request , res : Response  ) => {
     
     const token = generateJWT( {
 
-        id: loggedUser._id
+        iD: loggedUser._id  // ojo que en production va id: loggedUser._id
 
     } ) ;
 
