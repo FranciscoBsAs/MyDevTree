@@ -32,7 +32,7 @@ export default function AuthLayout () {
                     <img src='/myDevTree_Logo.jpg' alt='Logotipo de MyDevTree' className='h-14'></img>
 
                     <h1 className='text-white' >
-                        Hi from Login-View 
+                        Your DevTree website 
                     </h1>
                 
                 </div>
