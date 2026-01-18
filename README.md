@@ -106,3 +106,5 @@ o  Install with npm and start now?
 
 
     npm i @heroicons/react
+
+    npm i -D @tailwindcss/forms
