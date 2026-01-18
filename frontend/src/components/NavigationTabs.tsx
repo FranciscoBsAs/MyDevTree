@@ -1,6 +1,7 @@
 import { BookmarkSquareIcon, UserIcon } from "@heroicons/react/16/solid";
 
-import { href, Link, useLocation } from 'react-router-dom' ;
+import { href, Link, useLocation, useNavigate, type NavigateFunction } from 'react-router-dom' ;
+import toastService from "../sharedFrontContent/alertToasts/ToastService";
 
 
 const tabs = [
@@ -30,8 +31,19 @@ export default function NavigationTabs () {
     
     const location = useLocation() ;
 
+    const handleNavigate : NavigateFunction = useNavigate() ;
 
-    const handleChange = () => {}
+
+    const handleChange = ( e : React.ChangeEvent<HTMLSelectElement> ) => {
+
+        console.log( e.target.value )   // target = objetivo
+
+        toastService.info("Already in:  "+e.target.value) ;
+
+        handleNavigate( e.target.value );
+
+
+    }
 
 
     return (
@@ -51,7 +63,7 @@ export default function NavigationTabs () {
                     name="tabs"
                     id="tabs"
                     className="block w-full rounded-md border-gray-300 focus:border-blue-500 focus:ring-blue-500"
-                    onChange={handleChange}
+                    onChange={ handleChange }
                 >
                     {tabs.map( (tab) => (
                         <option value={tab.href} key={tab.name}>
