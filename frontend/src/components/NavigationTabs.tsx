@@ -1,8 +1,8 @@
 import { BookmarkSquareIcon, UserIcon } from "@heroicons/react/16/solid";
 
 import { Link, useLocation, useNavigate, type NavigateFunction } from 'react-router-dom' ;
-import toastService from "../sharedFrontContent/alertToasts/ToastService";
 
+import { toastService } from "../sharedFrontContent/alertToasts/ToastService";
 
 const tabs = [
     {
