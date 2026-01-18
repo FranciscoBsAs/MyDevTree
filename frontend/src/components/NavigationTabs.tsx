@@ -79,6 +79,7 @@ export default function NavigationTabs () {
             <div className="hidden sm:block">
 
                 <div className="border-b-4 border-slate-700">
+
                     <nav className="flex -mb-px space-x-8" aria-label="Tabs">
 
                         {tabs.map( (tab) => (
@@ -116,6 +117,7 @@ export default function NavigationTabs () {
                         ) )}
 
                     </nav>
+                    
                 </div>
 
             </div>
