@@ -26,13 +26,9 @@ export default function LoginView () {
 
         try {
 
-            const response = await APIaxiosInstance.post(`/root/auth/login` , loginInputData)
+            const {data} = await APIaxiosInstance.post(`/root/auth/login` , loginInputData)
 
-            const data = response.data.sucessLogin ;
-
-            console.log( data )
-
-            await toastService.success( data ) ;
+            toastService.success( data.sucessLogin ) ;
 
 
             reset() ;
