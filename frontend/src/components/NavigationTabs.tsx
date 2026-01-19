@@ -14,16 +14,9 @@ const tabs = [
 ]
 
 
-
-//para production:
-//const classNames = ( ...classes : String[] ) => classes.filter( Boolean ).join(' ') ;
+const classNames = ( ...classes : string[] ) : string => classes.filter( Boolean ).join(' ') ;
 
 
-const classNames = ( ...classes : string[] ) => {
-
-    return classes.filter( Boolean ).join(' '); 
-
-}
 
 
 export default function NavigationTabs () {
@@ -36,12 +29,11 @@ export default function NavigationTabs () {
 
     const handleChange = ( e : React.ChangeEvent<HTMLSelectElement> ) => {
 
-        console.log( e.target.value )   // target = objetivo
+        console.log( e.target.value )
 
         toastService.info("Already in:  "+e.target.value) ;
 
         handleNavigate( e.target.value );
-
 
     }
 
@@ -83,7 +75,6 @@ export default function NavigationTabs () {
                     <nav className="flex -mb-px space-x-8" aria-label="Tabs">
 
                         {tabs.map( (tab) => (
-
                             <Link
                                 key={tab.name}
                                 to={tab.href}
@@ -97,7 +88,6 @@ export default function NavigationTabs () {
                                     )
                                 }
                             >
-
                                 <tab.icon
                                     className={
                                         classNames(
@@ -108,10 +98,7 @@ export default function NavigationTabs () {
                                     }
                                     aria-hidden='true'
                                 />
-
                                 <span>{tab.name}</span>
-
-                            
                             </Link>
 
                         ) )}

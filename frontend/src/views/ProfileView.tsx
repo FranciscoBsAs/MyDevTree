@@ -6,7 +6,6 @@ export default function ProfileView () {
 
             <h3 className="text-2xl text-white font-bold">Edit Profile</h3>
 
-
             <div className="w-full max-w-2xl mx-auto" >
 
                 <form
@@ -20,7 +19,6 @@ export default function ProfileView () {
                     </legend>
 
                     <div className="grid grid-cols-1 gap-2   space-y-3 ">
-
                         <label htmlFor="">Handle Profile Alias</label>
                         <input
                             type="text"
@@ -31,7 +29,6 @@ export default function ProfileView () {
 
                     
                     <div className="grid grid-cols-1 gap-2">
-
                         <label htmlFor="">Description</label>
                         <textarea
                             name=""
@@ -43,9 +40,7 @@ export default function ProfileView () {
 
 
                     <div className="grid grid-cols-1 gap-2">
-
                         <label htmlFor="">Image</label>
-
                         <input
                             type="file"
                             className="border-none bg-slate-100 rounded-lg p-2  placeholder-slate-400"
@@ -54,17 +49,14 @@ export default function ProfileView () {
                             accept="image/*"
                             onChange={() => {}}
                         />
-
                     </div>
 
 
                     <input
                         type="text"
-                        //className="bg-cyan-400 p-2 text-lg w-full uppercase text-slate-600 rounded-lg font-bold cursor-pointer"
                         className="bg-cyan-400 p-3 text-lg w-full text-slate-200 rounded-lg font-bold cursor-pointer"
                         value="Save changes"
                     />
-
 
                 </form>
 
