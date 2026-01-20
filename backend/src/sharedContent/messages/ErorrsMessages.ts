@@ -53,5 +53,12 @@ export const errorsMessagesObject = {
 
     unmatchedPassword: new Error('The password does not match the provided email') 
 
+    ,
+
+    noAuthorizeUser: new Error('User session is not authorized')
+
+    ,
+
+    userNotExist: new Error("The user doesn't exist ")
 
 }
