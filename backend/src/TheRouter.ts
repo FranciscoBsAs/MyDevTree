@@ -1,11 +1,12 @@
 import { Router } from 'express'
 import { mongooseUser } from './modelsToDB/UserModelCollection';
 import { Document } from 'mongoose';
-import { CreateAccount, LoginUserAccount } from './handlers/HandleRequests';
+import { CreateAccount, getUser, LoginUserAccount } from './handlers/HandleRequests';
 
 import { body } from 'express-validator';
 import { errorsMessagesArray } from './sharedContent/messages/ErorrsMessages';
 import { HandleInputErrors } from './middleware/ValidationsMiddleware';
+import { AuthenticationMiddleware } from './middleware/AuthenticationMiddleware';
 
 
 const theRouter = Router() ;
@@ -70,7 +71,12 @@ theRouter.post( '/auth/login',
 
     LoginUserAccount
 
-)
+) ;
+
+
+
+theRouter.get( '/admin/profile', AuthenticationMiddleware , getUser ) ;
+
 
 
 export default theRouter
