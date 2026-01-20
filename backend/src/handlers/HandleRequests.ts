@@ -5,6 +5,7 @@ import slug from "slug";
 import { errorsMessagesObject } from "../sharedContent/messages/ErorrsMessages";
 import { sucessMessagesArray } from "../sharedContent/messages/SucessMessages";
 import { generateJWT } from "../authentications/jwt";
+import jwt, { JwtPayload } from "jsonwebtoken";
 
 
 export const CreateAccount = async ( req : Request , res : Response ) => {
@@ -100,5 +101,16 @@ export const LoginUserAccount = async ( req : Request , res : Response  ) => {
     //res.status(200).send( token )
     
 
+
+}
+
+
+
+export const getUser = async ( req : Request, res : Response ) => {
+
+    console.log("Testing from getUser handle function");
+
+
+    res.status(200).json( req.user ) ;
 
 }
