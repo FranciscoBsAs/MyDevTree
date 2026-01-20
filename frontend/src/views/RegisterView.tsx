@@ -36,7 +36,7 @@ export default function RegisterView () {
 
     try {
 
-      const response = await axios.post(`${APIaxiosInstance}/root/auth/register`, inputFormData ) ;
+      const response = await APIaxiosInstance.post(`/root/auth/register`, inputFormData ) ;
 
       // const {data} = await axios.post('http://localhost:4000/Root/auth/register', inputFormData ) ;
 
@@ -44,7 +44,7 @@ export default function RegisterView () {
 
       const data = response.data ;
 
-      if(data) toastService.success( data.messageSuces ) ;
+      if(data) toastService.success( data.messageSucess ) ;
 
       reset() ;
       
