@@ -26,8 +26,6 @@ export const AuthenticationMiddleware = async ( req : Request , res : Response ,
 
     const bearer = req.headers.authorization ;
 
-    console.log( bearer ) ;
-
     if( !bearer ) return res.status(401).json( { error: errorsMessagesArray.noAuthorizeUser.message } ) ;
 
 
@@ -41,7 +39,6 @@ export const AuthenticationMiddleware = async ( req : Request , res : Response ,
         const result = jwt.verify( token , process.env.MAKE_IT_ALL ) as JwtPayload ;
 
 
-        console.log( 'id: ', result?.iD ) ;
 
         const userInMemory = await mongooseUser.findById( result?.iD ).select('-password') ;
 
@@ -51,7 +48,7 @@ export const AuthenticationMiddleware = async ( req : Request , res : Response ,
 
         //res.json( userInMemory ) ;
 
-        req.user = userInMemory ;
+        req.user = userInMemory ;   // banisters to handle getUser(req, res)
 
         nextFunction() ;
 
