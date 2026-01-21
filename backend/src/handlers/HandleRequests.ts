@@ -108,8 +108,7 @@ export const LoginUserAccount = async ( req : Request , res : Response  ) => {
 
 export const getUser = async ( req : Request, res : Response ) => {
 
-    console.log("Testing from getUser handle function");
-
+    //console.log("Testing from getUser handle function");
 
     res.status(200).json( req.user ) ;
 
