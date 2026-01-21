@@ -27,7 +27,7 @@ export default function LoginView () {
 
         try {
 
-            const response = await APIaxiosInstance.post(`/root/auth/login` , loginInputData)
+            const response = await APIaxiosInstance.post(`/auth/login` , loginInputData)
 
             const data = response.data ;
 
