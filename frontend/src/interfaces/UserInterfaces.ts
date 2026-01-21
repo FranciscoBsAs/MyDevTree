@@ -1,8 +1,11 @@
 export interface userFrontI {
+
     name : string,
     email : string,
     password : string,
-    handleProfileAlias : string 
+    handleProfileAlias : string ,
+    description : string
+
 }
 
 
@@ -14,3 +17,6 @@ export interface userRegisterFrontI extends userFrontI {
 
 
 export interface userLoginFrontI extends Pick< userFrontI, 'email' | 'password' > {}
+
+
+export interface userEditFrontI extends Pick< userFrontI, 'handleProfileAlias' | 'description' > {}
