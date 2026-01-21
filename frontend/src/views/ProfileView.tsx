@@ -1,4 +1,39 @@
+import { useForm } from 'react-hook-form'
+import { ErrorMessageComponent } from '../components/ErrorMessageComponent'
+import { errorsMessageObj } from '../sharedFrontContent/messagesArray/FrontErrorsMessages'
+import type { userEditFrontI, userFrontI } from '../interfaces/UserInterfaces'
+import { useQuery, type UseQueryOptions, useQueryClient } from '@tanstack/react-query' ;
+import { Navigate } from "react-router-dom";
+import { GetUserFetching } from "../api/GetUserFetching_useQuery";
+import { getUser_ConfigQuery } from "../assets/UserQueryConfig";
+
+
+
+
 export default function ProfileView () {
+
+
+    const queryClient = useQueryClient() ;
+
+    const data : userFrontI | undefined = queryClient.getQueryData( ['user'] ) ;
+
+
+
+    const { register, handleSubmit, formState:{errors} } = useForm< userEditFrontI >( {defaultValues: {
+
+        handleProfileAlias: data?.handleProfileAlias ,
+
+        description: data?.description ,
+
+    }})
+
+
+    const handleUserProfileAlias_Form = ( formData : userEditFrontI ) => {
+
+        console.log('desde handleUserProfile_Form: ', formData) ;
+
+    }
+
 
     return (
 
@@ -11,7 +46,7 @@ export default function ProfileView () {
                 <form
                     action=""
                     className="bg-white px-5 py-5 rounded-lg space-y-5 mt-2"
-                    onSubmit={() => {}}
+                    onSubmit={ handleSubmit( handleUserProfileAlias_Form ) }
                 >
 
                     <legend className="text-2xl text-slate-800 text-center">
@@ -24,17 +59,25 @@ export default function ProfileView () {
                             type="text"
                             className="border-none bg-slate-100 rounded-lg p-2  placeholder-slate-400 "
                             placeholder="handle profile alias or user name"
+                            {...register( 'handleProfileAlias', 
+                                {
+                                    required: errorsMessageObj.required('Handle Profile Alias')
+                                }
+                            )}
                         />
+
+                        { errors.handleProfileAlias && <ErrorMessageComponent> {errors.handleProfileAlias.message} </ErrorMessageComponent> }
+
                     </div>
 
                     
                     <div className="grid grid-cols-1 gap-2">
                         <label htmlFor="">Description</label>
                         <textarea
-                            name=""
-                            id=""
+                            id="description"
                             className="border-none bg-slate-100 rounded-lg p-2  placeholder-slate-400"
                             placeholder="Your description"
+                            {...register( 'description' )}
                         ></textarea>
                     </div>
 
@@ -53,7 +96,8 @@ export default function ProfileView () {
 
 
                     <input
-                        type="text"
+                        type="submit"
+                        //className="bg-cyan-400 p-2 text-lg w-full uppercase text-slate-600 rounded-lg font-bold cursor-pointer"
                         className="bg-cyan-400 p-3 text-lg w-full text-slate-200 rounded-lg font-bold cursor-pointer"
                         value="Save changes"
                     />
