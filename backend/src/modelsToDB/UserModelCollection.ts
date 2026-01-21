@@ -11,7 +11,11 @@ export interface userI {
 
     handleProfileAlias : string ,
 
-    _id? : string
+    _id? : string ,
+
+    description? : string
+
+
 
 }
 
@@ -58,6 +62,13 @@ const userSchema = new Schema(
             trim: true,
 
             unique: true
+
+        },
+        description: {
+            
+            type: String,
+
+            default: '',
 
         }
 
