@@ -36,11 +36,7 @@ export default function RegisterView () {
 
     try {
 
-      const response = await APIaxiosInstance.post(`/root/auth/register`, inputFormData ) ;
-
-      // const {data} = await axios.post('http://localhost:4000/Root/auth/register', inputFormData ) ;
-
-      //if( response )console.log(response)
+      const response = await APIaxiosInstance.post(`/auth/register`, inputFormData ) ;
 
       const data = response.data ;
 
