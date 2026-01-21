@@ -79,5 +79,11 @@ o  Install with npm and start now?
 
     npm i @heroicons/react
 
-
     npm i -D @tailwindcss/forms
+
+
+    npm i @tanstack/react-query
+
+    npm i @tanstack/react-query-devtools
+
+    
