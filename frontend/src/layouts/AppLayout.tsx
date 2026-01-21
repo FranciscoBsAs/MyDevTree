@@ -2,9 +2,26 @@ import { Link, Outlet } from "react-router-dom" ;
 
 import { Toaster } from "react-hot-toast";
 import NavigationTabs from "../components/NavigationTabs";
+import { useQuery, type UseQueryOptions } from '@tanstack/react-query' ;
+import { Navigate } from "react-router-dom";
+import { GetUserFetching } from "../api/GetUserFetching_useQuery";
+import { getUser_ConfigQuery } from "../assets/UserQueryConfig";
+
+
 
 
 export default function AppLayout () {
+
+
+    const { data, isLoading, error, isError } = useQuery( getUser_ConfigQuery )
+
+    
+    
+    if(isLoading) return 'Loading...' ;
+    
+    if( isError ) return <Navigate to={'/auth/login'} /> ;
+    
+    console.log(data)
 
     return(
 
@@ -46,7 +63,7 @@ export default function AppLayout () {
 
                     <div className="flex justify-end">
                         <Link className="font-bold text-right text-slate-800 text-2xl" to={''} target="_blank" rel="noreferrer noopener">
-                            Visit my Profile
+                            Visit my Profile: / {data?.handleProfileAlias}
                         </Link>
                     </div>
 
