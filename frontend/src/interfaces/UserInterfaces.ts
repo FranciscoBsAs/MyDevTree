@@ -20,3 +20,8 @@ export interface userLoginFrontI extends Pick< userFrontI, 'email' | 'password' 
 
 
 export interface userEditFrontI extends Pick< userFrontI, 'handleProfileAlias' | 'description' > {}
+
+
+export interface updateProfileResponseI {
+    messageSucess : string
+}
