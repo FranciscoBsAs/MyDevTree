@@ -2,10 +2,10 @@ import { useForm } from 'react-hook-form'
 import { ErrorMessageComponent } from '../components/ErrorMessageComponent'
 import { errorsMessageObj } from '../sharedFrontContent/messagesArray/FrontErrorsMessages'
 import type { userEditFrontI, userFrontI } from '../interfaces/UserInterfaces'
-import { useQuery, type UseQueryOptions, useQueryClient } from '@tanstack/react-query' ;
+import { useQuery, type UseQueryOptions, useQueryClient, useMutation } from '@tanstack/react-query' ;
 import { Navigate } from "react-router-dom";
 import { GetUserFetching } from "../api/GetUserFetching_useQuery";
-import { getUser_ConfigQuery } from "../assets/UserQueryConfig";
+import { getUser_ConfigQuery, useMutation_ConfigQuery } from "../assets/UserQueryConfig";
 
 
 
@@ -15,8 +15,9 @@ export default function ProfileView () {
 
     const queryClient = useQueryClient() ;
 
-    const data : userFrontI | undefined = queryClient.getQueryData( ['user'] ) ;
+    const data = queryClient.getQueryData< userFrontI | undefined >( ['user'] ) ;
 
+    const updateProfileMutation = useMutation( useMutation_ConfigQuery(queryClient) ) ;
 
 
     const { register, handleSubmit, formState:{errors} } = useForm< userEditFrontI >( {defaultValues: {
@@ -28,9 +29,14 @@ export default function ProfileView () {
     }})
 
 
+
+
+
     const handleUserProfileAlias_Form = ( formData : userEditFrontI ) => {
 
         console.log('desde handleUserProfile_Form: ', formData) ;
+
+        updateProfileMutation.mutate( formData ) ;
 
     }
 
