@@ -61,12 +61,13 @@ export default function AppLayout () {
 
                     <NavigationTabs/>
 
+                    {/*
                     <div className="flex justify-end">
                         <Link className="font-bold text-right text-slate-800 text-2xl" to={''} target="_blank" rel="noreferrer noopener">
                             Visit my Profile: / {data?.handleProfileAlias}
                         </Link>
                     </div>
-
+                    */}
 
                 </main>
                 
@@ -77,7 +78,15 @@ export default function AppLayout () {
                 <div className="flex-1">
                     <Outlet/>
                 </div>
-                <div className="w-full md:w-96 bg-slate-800 px-5 py-10 space-y-6"></div>
+                <div className="w-full md:w-96 bg-slate-800 px-5 py-10 space-y-6">
+
+                    <div className="flex justify-end">
+                        <Link className="font-bold text-right bg-slate-400 text-1xl" to={''} target="_blank" rel="noreferrer noopener">
+                            Visit my Profile: / {data?.handleProfileAlias}
+                        </Link>
+                    </div>
+
+                </div>
 
             </div>
 
