@@ -1,8 +1,9 @@
-import { QueryClient, useQuery, type DefinedUseQueryResult, type UseMutationOptions, type UseQueryOptions } from '@tanstack/react-query' ;
+import { QueryClient, useMutation, useQuery, type DefinedUseQueryResult, type UseMutationOptions, type UseQueryOptions } from '@tanstack/react-query' ;
 import type { updateProfileResponseI, userEditFrontI, userFrontI } from '../interfaces/UserInterfaces';
 import { GetUserFetching } from '../api/GetUserFetching_useQuery';
 import { UpdateProfileRequest } from '../api/UpdateProfileRequest';
 import toastService from '../sharedFrontContent/alertToasts/ToastService';
+import { UploadImageRequest } from '../api/UploadImageRequest';
 
 
 
@@ -45,6 +46,56 @@ export const useMutation_ConfigQuery = ( someQueryClient : QueryClient ) : UseMu
     )
 
 }
+
+
+
+export const uploadImage_useMutationConfig = ( queryClient : QueryClient ) : UseMutationOptions < updateProfileResponseI | undefined , Error , File > => {
+
+    return(
+
+        {
+
+            mutationFn: UploadImageRequest,
+
+            onError: (error) => toastService.error(error.message)  ,
+
+            onSuccess: ( data ) => {
+
+                queryClient.setQueryData(
+
+                    ['user'], 
+
+                    ( prevData : userFrontI ) => {
+
+                        return {
+                            ...prevData,
+                            imageURL: data?.imageURL ,
+                            //message: data?.message
+                            
+                        }
+
+                    } 
+                
+                )
+
+                if( data ) toastService.success( data.message ) ;
+
+            }
+
+        }
+
+    )
+    
+
+}
+
+
+
+
+
+
+
+
 
 
 // UseMutationOptions< userEditFrontI | undefined, Error, userEditFrontI >
