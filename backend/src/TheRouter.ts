@@ -1,7 +1,7 @@
 import { Router } from 'express'
 import { mongooseUser } from './modelsToDB/UserModelCollection';
 import { Document } from 'mongoose';
-import { CreateAccount, getUser, LoginUserAccount } from './handlers/HandleRequests';
+import { CreateAccount, GetUser, LoginUserAccount, UpdateProfile, UploadImage } from './handlers/HandleRequests';
 
 import { body } from 'express-validator';
 import { errorsMessagesObject } from './sharedContent/messages/ErorrsMessages';
@@ -60,7 +60,35 @@ theRouter.post( '/auth/login',
 
 
 
-theRouter.get( '/admin/profile', AuthenticationMiddleware , getUser ) ;
+theRouter.get( '/admin/profile', AuthenticationMiddleware , GetUser ) ;
+
+
+
+theRouter.patch('/admin/profile',
+
+    body('handleProfileAlias')
+        .notEmpty()
+        .withMessage( errorsMessagesArray.notEmptyFieldFromPOST('handleProfileAlias') )
+
+    ,
+
+    body('description')
+        .notEmpty()
+        .withMessage( errorsMessagesArray.notEmptyFieldFromPOST('description') )
+    ,
+    
+    HandleInputErrors
+
+    ,
+
+    AuthenticationMiddleware,
+    UpdateProfile 
+) ;
+
+
+
+theRouter.post('/admin/profile/image', AuthenticationMiddleware, UploadImage )
+
 
 
 
