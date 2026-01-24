@@ -1,6 +1,7 @@
-import mongoose, { Schema } from "mongoose";
+import mongoose, { Document, Schema } from "mongoose";
 
-export interface userI {
+
+export interface userI extends Document {
 
     name : string ,
 
@@ -10,9 +11,11 @@ export interface userI {
 
     handleProfileAlias : string ,
 
-    _id? : string ,
+    //_id? : mongoose.Types.ObjectId | string ,
 
-    description? : string
+    description? : string ,
+
+    imageURL? : string
 
 
 
@@ -69,6 +72,14 @@ const userSchema = new Schema(
             type: String,
 
             default: '',
+
+        },
+
+        imageURL: {
+
+            type: String,
+
+            default: '' ,
 
         }
 
