@@ -14,7 +14,7 @@ export const HandleInputErrors = ( req : Request , res : Response , nextFunction
         return res.status(400).json(
 
             {
-                errorsDescription: errorsFromRouter_POST.array()
+                errors: errorsFromRouter_POST.array()
             }
 
         )
