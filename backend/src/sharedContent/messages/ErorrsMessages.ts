@@ -61,4 +61,16 @@ export const errorsMessagesArray = {
 
     userNotExist: new Error("The user doesn't exist ")
 
+    ,
+
+    updateError: new Error("A error happend update the profile")
+    
+    ,
+
+    invalidImageFormat: new Error( "Invalid image format. Only JPG and PNG are allowed" )
+
+    ,
+
+    notImageUploadAlready: new Error("No image was provided")
+
 }
