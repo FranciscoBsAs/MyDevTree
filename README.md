@@ -115,3 +115,8 @@ o  Install with npm and start now?
     npm i @tanstack/react-query-devtools
 
     
+    npm install cloudinary
+
+    npm install formidable
+
+        npm i --save-dev @types/formidable
