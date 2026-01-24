@@ -5,7 +5,7 @@ import type { userEditFrontI, userFrontI } from '../interfaces/UserInterfaces'
 import { useQuery, type UseQueryOptions, useQueryClient, useMutation } from '@tanstack/react-query' ;
 import { Navigate } from "react-router-dom";
 import { GetUserFetching } from "../api/GetUserFetching_useQuery";
-import { getUser_ConfigQuery, useMutation_ConfigQuery } from "../assets/UserQueryConfig";
+import { getUser_ConfigQuery, uploadImage_useMutationConfig, useMutation_ConfigQuery } from "../assets/UserQueryConfig";
 
 
 
@@ -29,7 +29,32 @@ export default function ProfileView () {
     }})
 
 
+    const uploadImageMutation = useMutation( uploadImage_useMutationConfig(queryClient) ) ;
 
+
+
+    const handleUploadImage = ( e : React.ChangeEvent<HTMLInputElement> ) => {
+
+        console.log('Desde handle change \n') ;
+
+        
+
+        if(e.target.files) {
+
+            const file : File = e.target.files[0] ;
+        
+
+            // uploadImageMutation.mutate(file) ;   IMPORTANTISIMA LINEA
+
+            uploadImageMutation.mutate(file)
+        } 
+
+
+    }
+
+
+
+    
 
 
     const handleUserProfileAlias_Form = ( formData : userEditFrontI ) => {
@@ -101,7 +126,7 @@ export default function ProfileView () {
                             id="image"
                             name="handle"
                             accept="image/*"
-                            onChange={() => {}}
+                            onChange={ handleUploadImage }
                         />
 
                     </div>
