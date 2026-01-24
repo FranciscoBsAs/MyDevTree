@@ -4,7 +4,8 @@ export interface userFrontI {
     email : string,
     password : string,
     handleProfileAlias : string ,
-    description : string
+    description : string ,
+    imageURL : string
 
 }
 
@@ -22,6 +23,7 @@ export interface userLoginFrontI extends Pick< userFrontI, 'email' | 'password' 
 export interface userEditFrontI extends Pick< userFrontI, 'handleProfileAlias' | 'description' > {}
 
 
-export interface updateProfileResponseI {
-    messageSucess : string
+export interface updateProfileResponseI extends Pick< userFrontI, 'imageURL' > {
+    messageSucess : string ,
+    message : string ,
 }
