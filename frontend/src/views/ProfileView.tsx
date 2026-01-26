@@ -127,6 +127,7 @@ export default function ProfileView () {
                             name="handle"
                             accept="image/*"
                             onChange={ handleUploadImage }
+                            //placeholder={data?.imageURL}
                         />
 
                     </div>
@@ -134,7 +135,6 @@ export default function ProfileView () {
 
                     <input
                         type="submit"
-                        //className="bg-cyan-400 p-2 text-lg w-full uppercase text-slate-600 rounded-lg font-bold cursor-pointer"
                         className="bg-cyan-400 p-3 text-lg w-full text-slate-200 rounded-lg font-bold cursor-pointer"
                         value="Save changes"
                     />
