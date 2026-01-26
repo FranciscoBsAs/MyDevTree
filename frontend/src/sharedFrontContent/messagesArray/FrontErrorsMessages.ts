@@ -7,6 +7,8 @@ export const errorsMessageObj = {
 
     format: 'Email format is invalid',
 
-    notTheSamePassword: "The password are not the same"
+    notTheSamePassword: "The password are not the same" ,
+
+    invalidadFormatURL: "Unknown or incorrectly formatted URL"
 
 }
