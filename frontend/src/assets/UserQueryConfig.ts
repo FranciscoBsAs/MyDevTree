@@ -20,7 +20,7 @@ export const getUser_ConfigQuery : UseQueryOptions< userFrontI | undefined, Erro
 }
 
 export const useMutation_ConfigQuery = ( someQueryClient : QueryClient ) : UseMutationOptions< // Tabular en production
-        updateProfileResponseI | undefined, // Lo que RETORNA la API
+        updateProfileResponseI | undefined, // Lo que RETORNA la API mediante mutationFn
         Error,              // Tipo de error
         userEditFrontI      // Lo que finalmente se envia a la API
 > => {
