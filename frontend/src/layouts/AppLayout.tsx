@@ -73,19 +73,27 @@ export default function AppLayout () {
                 
             </div>
 
-            <div className="flex flex-col md:flex-row gap-10 mt-10">
+            <div className="flex flex-col md:flex-row gap-10 mt-10  px-5 md:px-10 ">
 
-                <div className="flex-1">
+                <div className="flex-1 ">
                     <Outlet/>
                 </div>
+
                 <div className="w-full md:w-96 bg-slate-800 px-5 py-10 space-y-6">
 
                     <div className="flex justify-end">
+                        
                         <Link className="font-bold text-right bg-slate-400 text-1xl" to={''} target="_blank" rel="noreferrer noopener">
                             Visit my Profile: / {data?.handleProfileAlias}
                         </Link>
+
                     </div>
 
+                        <p className="text-2xl text-center text-white">📌 {data?.handleProfileAlias}</p>
+
+                        { data?.imageURL &&
+                            <img src={data?.imageURL} alt="Profile Image" className="mx-auto max-w-[250px]" />
+                        }
                 </div>
 
             </div>
