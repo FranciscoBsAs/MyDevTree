@@ -1,10 +1,6 @@
 import { mongooseUser, userI } from "../modelsToDB/UserModelCollection" ;
-
 import type { Request, Response } from 'express' ;
-
-
 import { CheckTheRespectivePassword, HashingThePassword } from "../authentications/AuthPassword";
-
 import slug from "slug";
 import { errorsMessagesArray } from "../sharedContent/messages/ErorrsMessages";
 import { sucessMessagesArray } from "../sharedContent/messages/SucessMessages";
@@ -140,7 +136,7 @@ export const UpdateProfile = async ( req : Request , res : Response ) => {
 
     try {
 
-        const { description } = req.body ;
+        const { description , links } = req.body ;
 
 
         const cleanHandleProfileAlias : string = slug( req.body.handleProfileAlias ) ;
@@ -153,7 +149,9 @@ export const UpdateProfile = async ( req : Request , res : Response ) => {
 
         req.user.description = description ;
 
-        req.user.handleProfileAlias = cleanHandleProfileAlias
+        req.user.handleProfileAlias = cleanHandleProfileAlias ;
+
+        req.user.links = links;
 
 
         await req.user.save() ;

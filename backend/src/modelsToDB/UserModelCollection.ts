@@ -17,6 +17,8 @@ export interface userI extends Document {
 
     imageURL? : string
 
+    links : string
+
 
 
 }
@@ -80,6 +82,13 @@ const userSchema = new Schema(
 
             default: '' ,
 
+        },
+        links: {
+
+            type: String,
+
+            default: '[]'
+            
         }
 
     }
