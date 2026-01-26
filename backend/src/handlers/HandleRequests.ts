@@ -122,7 +122,7 @@ export const UpdateProfile = async ( req : Request , res : Response ) => {
 
     try {
 
-        const { description } = req.body ;
+        const { description , links } = req.body ;
 
 
         const cleanHandleProfileAlias : string = slug( req.body.handleProfileAlias ) ;
@@ -135,7 +135,9 @@ export const UpdateProfile = async ( req : Request , res : Response ) => {
 
         req.user.description = description ;
 
-        req.user.handleProfileAlias = cleanHandleProfileAlias
+        req.user.handleProfileAlias = cleanHandleProfileAlias ;
+
+        req.user.links = links;
 
 
         await req.user.save() ;
