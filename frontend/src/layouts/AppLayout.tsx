@@ -6,6 +6,7 @@ import { useQuery, type UseQueryOptions } from '@tanstack/react-query' ;
 import { Navigate } from "react-router-dom";
 import { GetUserFetching } from "../api/GetUserFetching_useQuery";
 import { getUser_ConfigQuery } from "../assets/UserQueryConfig";
+import LinksInProfile from "../components/LinksInProfile";
 
 
 
@@ -21,7 +22,7 @@ export default function AppLayout () {
     
     if( isError ) return <Navigate to={'/auth/login'} /> ;
     
-    console.log(data)
+    //console.log(data)
 
     return(
 
@@ -55,7 +56,7 @@ export default function AppLayout () {
             </header>
 
 
-            <div className="bg-gray-100 py-3">
+            <div className="bg-stone-300 py-3">
 
                 <main className="mx-auto max-w-5xl p-10 md:p-0">
 
@@ -94,6 +95,15 @@ export default function AppLayout () {
                         { data?.imageURL &&
                             <img src={data?.imageURL} alt="Profile Image" className="mx-auto max-w-[250px]" />
                         }
+
+
+                        <p className="mt-20 flex flex-col gap-5 text-slate-200" >{data?.description}</p>
+
+
+                        <LinksInProfile data={data!}/>
+
+
+
                 </div>
 
             </div>
