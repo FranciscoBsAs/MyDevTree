@@ -19,7 +19,6 @@ export default function RegisterView () {
     handleProfileAlias: '',
     password: '',
     password_confirmation: ''
-
   }
 
 

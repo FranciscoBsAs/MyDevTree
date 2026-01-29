@@ -6,6 +6,7 @@ export interface userFrontI {
     handleProfileAlias : string ,
     description? : string ,
     imageURL? : string
+    links? : string
 
 }
 
