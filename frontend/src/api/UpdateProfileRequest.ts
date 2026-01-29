@@ -3,7 +3,7 @@ import APIaxiosInstance from "../configConnection/AxiosInstance";
 import type { updateProfileResponseI, userEditFrontI, userFrontI } from "../interfaces/UserInterfaces";
 
 
-export async function UpdateProfileRequest ( formData : userEditFrontI ) {
+export async function UpdateProfileRequest ( formData : userEditFrontI | userFrontI ) {
 
     try {
         
