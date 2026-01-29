@@ -21,13 +21,13 @@ export interface DevTreeInputPropsI {
 
 export default function DevTreeInput ( { item , handleUrlChangeProp , handleEnableLinkProp } : DevTreeInputPropsI ) {
 
-    const iconImageDirections  = `url('/social/icon_${item.name.toLocaleLowerCase()}${ item.name.toLowerCase() === 'personal-web-site'  ?  '.png'  :  '.svg' }')`
+    const iconImageDirections = `url('/social/icon_${item.name.toLocaleLowerCase()}${ item.name.toLowerCase() === 'personal-web-site'  ?  '.png'  :  '.svg' }')`
 
 
     const handleChangeEnable = () => handleEnableLinkProp(item.name) ;
 
 
-    console.log(item)
+    //console.log(item)
 
     return(
     
@@ -57,7 +57,7 @@ export default function DevTreeInput ( { item , handleUrlChangeProp , handleEnab
                 checked={ item.enabled }
                 //onChange={ () => {} }
                 onChange={handleChangeEnable}
-                className={ ClassNames( item.enabled  ?  'bg-green-700'  :  'bg-orange-300'  , 
+                className={ ClassNames( item.enabled  ?  'bg-green-700'  :  'bg-stone-500'  , 
                     'relative inline-flex h-6 w-11 flex-shirk-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-900 focus:ring-offset-2 '
                 )
 
@@ -67,7 +67,7 @@ export default function DevTreeInput ( { item , handleUrlChangeProp , handleEnab
                     aria-hidden="true"
                     className={ ClassNames(
                         item.enabled  ?  'translate-x-5'  :  'translate-x-0' ,
-                        'pointer-events-none inline-block h-5 w-5 transform rounded-full bg-slate-100 shadow ring-0 transition duration-200 ease-in-out'
+                        'pointer-events-none inline-block h-5 w-5 transform rounded-full bg-stone-200 shadow ring-0 transition duration-200 ease-in-out'
                     ) }
                 ></span>
 
