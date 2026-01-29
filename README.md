@@ -97,3 +97,4 @@ o  Install with npm and start now?
     npm install @headlessui/react
 
 
+    npm i @dnd-kit/core @dnd-kit/sortable @dnd-kit/utilities
