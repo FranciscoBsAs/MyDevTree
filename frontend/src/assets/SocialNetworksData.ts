@@ -16,7 +16,7 @@ export const socialNetworksData : socialI[] = [
 
     { name: 'Twitch', url: '', enabled: false  }, 
 
-    { name: 'LinkedIn', url: '', enabled: true  }, 
+    { name: 'LinkedIn', url: '', enabled: false  }, 
 
     { name: 'personal-web-site', url: '', enabled: false }
 
