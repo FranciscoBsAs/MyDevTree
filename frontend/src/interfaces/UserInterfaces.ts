@@ -4,8 +4,8 @@ export interface userFrontI {
     email : string,
     password : string,
     handleProfileAlias : string ,
-    description : string ,
-    imageURL : string
+    description? : string ,
+    imageURL? : string
 
 }
 

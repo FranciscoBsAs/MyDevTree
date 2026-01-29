@@ -14,11 +14,11 @@ export default function RegisterView () {
 
   const initialValues : userRegisterFrontI = {
 
-      name: '',
-      email: '',
-      handleProfileAlias: '',
-      password: '',
-      password_confirmation: ''
+    name: '',
+    email: '',
+    handleProfileAlias: '',
+    password: '',
+    password_confirmation: ''
 
   }
 
