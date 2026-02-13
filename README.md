@@ -61,7 +61,7 @@ o  Install with npm and start now?
 
     npm i -D tailwindcss@3 postcss autoprefixer
 
-        npx taiwindcss init -p
+        npx tailwindcss init -p
 
 
     npm i react-router-dom
@@ -98,3 +98,6 @@ o  Install with npm and start now?
 
 
     npm i @dnd-kit/core @dnd-kit/sortable @dnd-kit/utilities
+
+
+    npm i react-slugify
