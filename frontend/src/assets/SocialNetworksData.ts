@@ -18,7 +18,12 @@ export const socialNetworksData : socialI[] = [
 
     { name: 'LinkedIn', url: '', enabled: false  }, 
 
-    { name: 'personal-web-site', url: '', enabled: false }
+    { name: 'personal-web-site', url: '', enabled: false },
+
+    { name: 'vsco', url: '', enabled: false }
 
 
 ]
+
+
+export const logosPNG = [ "vsco.png", "personal-web-site.png" ]
