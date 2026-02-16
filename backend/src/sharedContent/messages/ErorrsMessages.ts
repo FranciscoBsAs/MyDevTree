@@ -51,6 +51,10 @@ export const errorsMessagesObject = {
 
     ,
 
+    userNotFoundByHP: new Error('The handleProfileAlias is not registered to any user')
+    
+    ,
+
     unmatchedPassword: new Error('The password does not match the provided email') 
 
     ,
@@ -63,7 +67,7 @@ export const errorsMessagesObject = {
 
     ,
 
-    updateError: new Error("A error happend update the profile")
+    updateError: new Error("A error happen update the profile")
     
     ,
 
