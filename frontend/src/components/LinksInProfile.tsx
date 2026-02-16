@@ -37,9 +37,6 @@ export default function LinksInProfile ( {data} : linksInProfilePropsI ) {
 
     const handleDragEnd = ( e : DragEndEvent ) => {
 
-        console.log(e.active.id) ;
-        console.log(e.over) ;
-
         const { active, over } = e
 
 
@@ -100,7 +97,6 @@ export default function LinksInProfile ( {data} : linksInProfilePropsI ) {
                     {handleRenderLinks}
                 
                 </SortableContext>
-
                 
             </div>
             
