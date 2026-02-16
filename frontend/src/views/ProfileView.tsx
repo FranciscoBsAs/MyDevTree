@@ -2,10 +2,8 @@ import { useForm } from 'react-hook-form'
 import { ErrorMessageComponent } from '../components/ErrorMessageComponent'
 import { errorsMessageObj } from '../sharedFrontContent/messagesArray/FrontErrorsMessages'
 import type { userEditFrontI, userFrontI } from '../interfaces/UserInterfaces'
-import { useQuery, type UseQueryOptions, useQueryClient, useMutation } from '@tanstack/react-query' ;
-import { Navigate } from "react-router-dom";
-import { GetUserFetching } from "../api/GetUserFetching_useQuery";
-import { getUser_ConfigQuery, uploadImage_useMutationConfig, useMutation_ConfigQuery } from "../assets/UserQueryConfig";
+import { useQueryClient, useMutation } from '@tanstack/react-query' ;
+import {  uploadImage_useMutationConfig, useMutation_ConfigQuery } from "../assets/UserQueryConfig";
 
 
 
@@ -35,32 +33,30 @@ export default function ProfileView () {
 
     const handleUploadImage = ( e : React.ChangeEvent<HTMLInputElement> ) => {
 
-        console.log('Desde handle change \n') ;
-
-        
-
         if(e.target.files) {
 
             const file : File = e.target.files[0] ;
-        
 
             // uploadImageMutation.mutate(file) ;   IMPORTANTISIMA LINEA
 
             uploadImageMutation.mutate(file)
         } 
-
-
     }
-
-
-
-    
 
 
     const handleUserProfileAlias_Form = ( formData : userEditFrontI ) => {
 
-        console.log('desde handleUserProfile_Form: ', formData) ;
+        /*
+        const currentData = queryClient.getQueryData<userFrontI>(['user']) ;
 
+
+        if( currentData?.links ) formData.links = currentData.links ;
+
+        */
+
+
+        if(data && data.links) formData.links = data.links ;
+        
         updateProfileMutation.mutate( formData ) ;
 
     }
@@ -122,7 +118,7 @@ export default function ProfileView () {
                             name="handle"
                             accept="image/*"
                             onChange={ handleUploadImage }
-                            //placeholder={data?.imageURL}
+                            placeholder={ data && data.imageURL}
                         />
                     </div>
 
