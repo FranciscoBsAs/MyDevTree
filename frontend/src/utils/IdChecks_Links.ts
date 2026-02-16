@@ -1,11 +1,13 @@
 import type { socialI } from "../interfaces/SocialNetworksInterface";
 
+
 export function CheckId_Links ( link : socialI, socialNetwork : string, indexToUpdate : number ) : socialI {
 
     const disabledSocialNetObject : socialI = {
         ...link,
         id: 0 ,
-        enabled: false
+        enabled: false,
+        //url: ''
     }
     
     const updatedItems_Index : socialI = {
@@ -15,7 +17,7 @@ export function CheckId_Links ( link : socialI, socialNetwork : string, indexToU
 
     if( link.name === socialNetwork ) return disabledSocialNetObject ;
 
-    else if( link.id && link.id > indexToUpdate ) return updatedItems_Index ;
+    else if( link.id && link.id > indexToUpdate && ( indexToUpdate !== 0 && link.id === 1 ) ) return updatedItems_Index ;
 
     else return link;
 

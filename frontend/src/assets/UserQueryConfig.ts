@@ -1,4 +1,4 @@
-import { QueryClient, useMutation, useQuery, type DefinedUseQueryResult, type UseMutationOptions, type UseQueryOptions } from '@tanstack/react-query' ;
+import { QueryClient, type UseMutationOptions, type UseQueryOptions } from '@tanstack/react-query' ;
 import type { updateProfileResponseI, userEditFrontI, userFrontI } from '../interfaces/UserInterfaces';
 import { GetUserFetching } from '../api/GetUserFetching_useQuery';
 import { UpdateProfileRequest } from '../api/UpdateProfileRequest';
@@ -15,7 +15,9 @@ export const getUser_ConfigQuery : UseQueryOptions< userFrontI | undefined, Erro
     
     retry: 2 ,
 
-    refetchOnWindowFocus: false
+    refetchOnWindowFocus: false,
+
+    enabled: !!localStorage.getItem('AUTH_TOKEN')
 
 }
 
@@ -29,11 +31,11 @@ export const useMutation_ConfigQuery = ( someQueryClient : QueryClient ) : UseMu
         {
             mutationFn: UpdateProfileRequest ,
 
-            onError: ( error : Error ) => toastService.error('This error happend while the user profile was updating:  '+ error.message.toUpperCase),
+            onError: ( error : Error ) => toastService.error('This error happen while the user profile was updating: \n '+ error.message),
 
             onSuccess: ( data ) => {
                 
-                toastService.success(`${data  ?  data.messageSucess  :  'Profile updated successfully' } `)
+                toastService.success(`${data  ?  data.messageSuccess  :  'Profile updated successfully' } `)
 
                 someQueryClient.invalidateQueries(
                     {

@@ -10,6 +10,7 @@ import { useMutation_ConfigQuery } from "../assets/UserQueryConfig";
 import type { userFrontI } from "../interfaces/UserInterfaces";
 import { CheckId_Links, OnlyOneIdCheck_Links } from "../utils/IdChecks_Links";
 
+
 export default function LinkTreeView () {
 
 
@@ -18,12 +19,18 @@ export default function LinkTreeView () {
 
     const queryClient_Links = useQueryClient()
 
-    const data = queryClient_Links.getQueryData< userFrontI | undefined >(['user'])! ;
+    const data = queryClient_Links.getQueryData< userFrontI | undefined >(['user']) ;
 
     const updateProfileMutation = useMutation( useMutation_ConfigQuery( queryClient_Links ) )
 
 
-    const userLinksFromDB =  ( JSON.parse(data.links!) ) as socialI[]
+    //const userLinksFromDB = ( JSON.parse(data?.links!) ) as socialI[]  
+
+    const userLinksFromDB = data?.links  ?  ( JSON.parse(data?.links) as socialI[] )  :  [] ;
+
+    /*let userLinksFromDB : socialI[] ;
+
+    if( data?.links ) userLinksFromDB = ( JSON.parse(data?.links!) ) as socialI[] ;*/
 
 
     useEffect( () => {
@@ -51,8 +58,6 @@ export default function LinkTreeView () {
 
         setDevTreeLinks( updatedData ) ;
 
-        //console.table(devTreeLinks)
-        //console.table( JSON.parse(data.links!) )
 
     }, [] )
 
@@ -61,32 +66,57 @@ export default function LinkTreeView () {
 
         const updatedLinks = devTreeLinks.map( (link) : socialI => {
 
-            const linkUpdated : socialI = {
+
+            if( link.name === e.target.id ) return {
                 ...link,
                 url: e.target.value
-            }
-
-            if( link.name === e.target.id ) return linkUpdated ;
+            };
 
             else return link ;
 
         } )
-        //console.log(updatedLinks) ;
-
 
         setDevTreeLinks( updatedLinks ) ;
+
+        
+        queryClient_Links.setQueryData(['user'], ( prevData : userFrontI ) =>{
+
+            const prevArr = JSON.parse( prevData.links ?? '[]') as socialI[]  ;
+
+            const updatedArr = prevArr.map( (link) => {
+
+
+                if( link.name !== e.target.id ) return link ;
+
+                if( e.target.value.trim() === '' ) {
+
+                    return {
+                        ...link,
+                        url: '' //OJO
+                    }
+
+                }
+
+                return { ...link, url: e.target.value }
+
+            } )
+
+
+            return { ...prevData, links: JSON.stringify(updatedArr) }
+
+        } )
+
+        //
 
     }
 
 
     const handleEnableLink = ( socialNetwork : string ) => {
 
-        //console.log(socialNetwork) ;
-
 
         const targetLink = devTreeLinks.find( ( link ) => link.name === socialNetwork )
 
-        if( targetLink && !IsValidURL( targetLink.url ) ) toastService.error( errorsMessageObj.invalidadFormatURL ) ;
+        if( targetLink && !IsValidURL( targetLink.url ) ) toastService.error( errorsMessageObj.invalidedFormatURL ) ;
 
 
 
@@ -107,16 +137,17 @@ export default function LinkTreeView () {
         } )
 
 
-        setDevTreeLinks(updatedLinks)
+        setDevTreeLinks(updatedLinks) ;
 
 
-        const selectedSocialNetwork = updatedLinks.find( (link) => link.name === socialNetwork)
-
-        //console.log('\n',selectedSocialNetwork)
+        const selectedSocialNetwork = updatedLinks.find( (link) => link.name === socialNetwork) ;
 
 
-        let updatedSocialItems : socialI[] = [] 
+        let updatedSocialItems : socialI[] = []  ;
 
+
+        const currentsLinks = updatedLinks.filter( link => link.enabled || link.url ) ;
+        
 
         if( selectedSocialNetwork?.enabled ) {
 
@@ -149,13 +180,9 @@ export default function LinkTreeView () {
         }
 
 
-                                console.table(updatedSocialItems)
-
-
         //This go to the DB
         queryClient_Links.setQueryData( ['user'], ( prevData : userFrontI ) : userFrontI => ({
                 ...prevData ,
-                //links: JSON.stringify( updatedLinks )
                 links: JSON.stringify( updatedSocialItems )
             })
 
@@ -163,9 +190,17 @@ export default function LinkTreeView () {
 
     }
 
+    
+    const handleSaveChanges = () => {
 
-    const handleSaveChanges = () => updateProfileMutation.mutate( data! ) ;
+        const reCachedDataAfterRefresh = queryClient_Links.getQueryData<userFrontI>(['user']) ;
 
+        if( !reCachedDataAfterRefresh ) return  ;
+
+        updateProfileMutation.mutate( reCachedDataAfterRefresh )
+
+    } ;
+    
     
 
     return(
