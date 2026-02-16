@@ -1,0 +1,13 @@
+.btn-detail{
+    padding: 5px 15px; /* Tamaño del botón */
+    font-size: 20px; /* Tamaño del texto */
+    font-weight: 100; ;
+    color: rgb(33, 56, 56);
+    border: none; /* Sin borde */
+    border-radius: 25px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar */
+    /*transition: background 0.3s ease; /* Efecto suave */
+    background-color: lemonchiffon;
+    /*color:rgb(242, 238, 220); */
+    
+}
