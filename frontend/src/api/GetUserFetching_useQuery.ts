@@ -12,13 +12,11 @@ export async function GetUserFetching () {
         
         const { data } = await APIaxiosInstance.get<userFrontI>( '/admin/profile' )
 
-        //console.table(data)
-
         return data ;
 
     } catch (error) {
 
-        if( isAxiosError(error) && error.response ) {
+        if( isAxiosError(error) && error.response && token ) {
             
             toastService.error(error.response.data.error) ;
 
