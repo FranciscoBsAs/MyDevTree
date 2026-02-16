@@ -1,7 +1,7 @@
 import type { socialI } from "../interfaces/SocialNetworksInterface"
 import { Switch } from "@headlessui/react"
 import { ClassNames } from "../utils/ClassNames"
-
+import { logosPNG } from "../assets/SocialNetworksData"
 
 
 export interface DevTreeInputPropsI {
@@ -10,24 +10,18 @@ export interface DevTreeInputPropsI {
 
     handleUrlChangeProp : ( e : React.ChangeEvent<HTMLInputElement> ) => any ,
 
-
     handleEnableLinkProp : ( socialNetwork : string ) => void
-
 
 }
 
 
-
-
 export default function DevTreeInput ( { item , handleUrlChangeProp , handleEnableLinkProp } : DevTreeInputPropsI ) {
 
-    const iconImageDirections = `url('/social/icon_${item.name.toLocaleLowerCase()}${ item.name.toLowerCase() === 'personal-web-site'  ?  '.png'  :  '.svg' }')`
+    const iconImageDirections = `url('/social/icon_${item.name.toLocaleLowerCase()}${logosPNG.includes(`${item.name.toLowerCase()}.png`)  ?  '.png'  :  '.svg' }')`
 
 
     const handleChangeEnable = () => handleEnableLinkProp(item.name) ;
 
-
-    //console.log(item)
 
     return(
     
