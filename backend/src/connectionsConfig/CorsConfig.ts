@@ -4,7 +4,6 @@ import { CorsOptions } from 'cors'
 const allowedOrigins = [process.env.MEMPHIS_URL1, process.env.MEMPHIS_URL2]; 
 
 
-
 export const CORSconfig : CorsOptions = {
 
     origin: ( origin, callback ) => {
@@ -13,7 +12,7 @@ export const CORSconfig : CorsOptions = {
 
         if( !origin || allowedOrigins.includes(origin) ) callback(null, true) ;
 
-        else callback( new Error('CORS Error, no authorize connecction') ) ;
+        else callback( new Error('CORS Error, no authorize connection') ) ;
 
     }
 
