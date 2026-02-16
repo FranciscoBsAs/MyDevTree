@@ -101,3 +101,13 @@ o  Install with npm and start now?
 
 
     npm i react-slugify
+
+
+
+    Fort Testing:
+    
+    npm install cypress --save-dev
+
+        npx cypress open
+
+

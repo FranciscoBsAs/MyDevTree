@@ -7,7 +7,14 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}"
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage:{
+        "homeView-style-devTree": "url('/bg.svg')"
+      },
+      backgroundSize:{
+        "homeView-xl" : "50%"
+      }
+    },
   },
   plugins: [  ],
 }
