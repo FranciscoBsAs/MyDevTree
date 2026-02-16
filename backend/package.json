@@ -1,7 +1,7 @@
 {
-  "name": "mydevtree",
+  "name": "My Dev Tree",
   "version": "1.0.0",
-  "description": "Proyecto web para guardar perfiles de redes sociales hecho con TypeScript | Express | Mongoose | TailwindCSS",
+  "description": "Full Stack Web Project for the managing and sharing links to social networks profiles and personal websites. The Back End is developed with Node.js and Express, all with TypeScript, which implements secure authentication, data validation, file handling, and database persistence, all in connected with the Front End, it's made with React, TypeScript, Tailwind, among other modern techs. Tools are used for security, session management, hashing for the passwords, slugs for alias profiles, file uploads, and cloud storage for images, as well as integration with MongoDB.",
   "license": "ISC",
   "author": "Francisco Thomas Chiressi",
   "main": "index.js",
