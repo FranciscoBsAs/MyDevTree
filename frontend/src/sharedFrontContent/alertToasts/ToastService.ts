@@ -27,3 +27,4 @@ export const toastService = {
 
 }
 
+export default toastService
