@@ -3,20 +3,19 @@ import { BookmarkSquareIcon, UserIcon } from "@heroicons/react/16/solid";
 import { Link, useLocation, useNavigate, type NavigateFunction } from 'react-router-dom' ;
 
 import { toastService } from "../sharedFrontContent/alertToasts/ToastService";
+import { thePathsRoutes } from "../routes/PathsRoutes";
 
 const tabs = [
     {
-        name: 'Links', href:'/admin', icon: BookmarkSquareIcon
+        name: 'Links', href:thePathsRoutes.homeAdmin, icon: BookmarkSquareIcon
     },
     {
-        name: 'My Profile', href: '/admin/profile', icon: UserIcon
+        name: 'My Profile', href: thePathsRoutes.profile, icon: UserIcon
     }
 ]
 
 
 const classNames = ( ...classes : string[] ) : string => classes.filter( Boolean ).join(' ') ;
-
-
 
 
 export default function NavigationTabs () {
@@ -29,8 +28,6 @@ export default function NavigationTabs () {
 
     const handleChange = ( e : React.ChangeEvent<HTMLSelectElement> ) => {
 
-        console.log( e.target.value )
-
         toastService.info("Already in:  "+e.target.value) ;
 
         handleNavigate( e.target.value );
@@ -39,13 +36,11 @@ export default function NavigationTabs () {
 
 
     return (
-
         
         <div className="mb-2">
 
 
             <div className="sm:hidden">
-
 
                 <label htmlFor="" className="sr-only">
                     Select a tab
