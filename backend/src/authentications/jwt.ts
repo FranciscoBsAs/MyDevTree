@@ -8,8 +8,6 @@ export const generateJWT = ( payload : JwtPayload ) => {
         expiresIn: '180d',
         
     }) ;
-    
-    console.log("\n", payload)
 
     return token ;
 
