@@ -1,7 +1,7 @@
 import { Router } from 'express'
 import { mongooseUser } from './modelsToDB/UserModelCollection';
 import { Document } from 'mongoose';
-import { CreateAccount, GetUser, LoginUserAccount, UpdateProfile, UploadImage } from './handlers/HandleRequests';
+import { CreateAccount, GetUser, GetUserByHandleProfileAlias, LoginUserAccount, SearchUserByHandleProfileAlias, UpdateProfile, UploadImage } from './handlers/HandleRequests';
 
 import { body } from 'express-validator';
 import { errorsMessagesObject } from './sharedContent/messages/ErorrsMessages';
@@ -10,15 +10,6 @@ import { AuthenticationMiddleware } from './middleware/AuthenticationMiddleware'
 
 
 const theRouter = Router() ;
-
-
-
-theRouter.get( '/auth/register', ( req, res ) => {
-
-    console.log( 'From /register   URL' )
-
-
-} ) ;
 
 
 theRouter.post( '/auth/register',
@@ -68,13 +59,12 @@ theRouter.patch('/admin/profile',
 
     body('handleProfileAlias')
         .notEmpty()
-        .withMessage( errorsMessagesArray.notEmptyFieldFromPOST('handleProfileAlias') )
+        .withMessage( errorsMessagesObject.notEmptyFieldFromPOST('handleProfileAlias') )
 
     ,
 
     body('description')
-        .notEmpty()
-        .withMessage( errorsMessagesArray.notEmptyFieldFromPOST('description') )
+
     ,
     
     HandleInputErrors
@@ -90,6 +80,23 @@ theRouter.patch('/admin/profile',
 theRouter.post('/admin/profile/image', AuthenticationMiddleware, UploadImage )
 
 
+
+theRouter.get('/:handleProfileAlias', GetUserByHandleProfileAlias ) ;
+
+
+
+theRouter.post('/search',
+
+    body('handleProfileAlias').notEmpty().withMessage(errorsMessagesObject.notEmptyFieldFromPOST('handleProfileAlias'))
+    
+    ,
+
+    HandleInputErrors
+    
+    ,
+
+    SearchUserByHandleProfileAlias
+ )
 
 
 export default theRouter
