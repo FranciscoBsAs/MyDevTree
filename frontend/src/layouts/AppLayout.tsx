@@ -1,29 +1,45 @@
 import { Link, Outlet } from "react-router-dom" ;
-
 import { Toaster } from "react-hot-toast";
 import NavigationTabs from "../components/NavigationTabs";
-import { useQuery, type UseQueryOptions } from '@tanstack/react-query' ;
+import { useQuery } from '@tanstack/react-query' ;
 import { Navigate } from "react-router-dom";
-import { GetUserFetching } from "../api/GetUserFetching_useQuery";
 import { getUser_ConfigQuery } from "../assets/UserQueryConfig";
 import LinksInProfile from "../components/LinksInProfile";
-
-
+import Header from "../components/Header";
+import { useEffect, useState } from "react";
+import { thePathsRoutes } from "../routes/PathsRoutes";
 
 
 export default function AppLayout () {
 
 
-    const { data, isLoading, error, isError } = useQuery( getUser_ConfigQuery )
+    const { data, isLoading, isError } = useQuery( getUser_ConfigQuery )
 
     
+    const [ redirect, setRedirect ] = useState(false) ;
+
+    
+    useEffect( () => {
+        
+        if(isError) {
+
+            const timer = setTimeout(() => {
+                setRedirect(true)
+            }, 3000);
+
+            return () => clearTimeout(timer)
+        
+        }
+
+    }, [isError] )
+
+
     
     if(isLoading) return 'Loading...' ;
     
-    if( isError ) return <Navigate to={'/auth/login'} /> ;
+    if( redirect ) return <Navigate to={thePathsRoutes.login} /> ;
+  
     
-    //console.log(data)
-
     return(
 
         // Real Emmet snippet:
@@ -35,25 +51,7 @@ export default function AppLayout () {
             <Toaster position="top-right"/>
 
 
-            <header className="bg-slate-800 py-5">
-
-                {/*<div className="mx-auto max-w-5xl flex flex-cols md:flex-row items-center md:justify-between">*/}
-
-                <div className=" bg-slate-800 h-16 flex items-center" >
-
-                    <div className="max-w-7x1 mx-auto px-5 h-full flex items-center justify-between gap-4">
-                        <img src="/myDevTree_Logo.jpg" alt="" className="h-14" />
-                        <h1 className='text-white' >Your DevTree website</h1>
-                    </div>
-
-                    <div className="md:flex pr-5 ">
-                        <button className="bg-sky-300 p-3 text-lg w-full text-slate-900 rounded-lg font-bold cursor-pointer" onClick={ ()=>{} }>
-                            Log Out
-                        </button>
-                    </div>
-                
-                </div>
-            </header>
+            <Header/>
 
 
             <div className="bg-stone-300 py-3">
@@ -61,14 +59,6 @@ export default function AppLayout () {
                 <main className="mx-auto max-w-5xl p-10 md:p-0">
 
                     <NavigationTabs/>
-
-                    {/*
-                    <div className="flex justify-end">
-                        <Link className="font-bold text-right text-slate-800 text-2xl" to={''} target="_blank" rel="noreferrer noopener">
-                            Visit my Profile: / {data?.handleProfileAlias}
-                        </Link>
-                    </div>
-                    */}
 
                 </main>
                 
@@ -84,25 +74,28 @@ export default function AppLayout () {
 
                     <div className="flex justify-end">
                         
-                        <Link className="font-bold text-right bg-slate-400 text-1xl" to={''} target="_blank" rel="noreferrer noopener">
+                        <Link 
+                            className="font-bold text-right bg-slate-400 text-1xl" 
+                            to={`/${data?.handleProfileAlias}`} 
+                            target="_blank" 
+                            rel="noreferrer noopener"
+                        >
                             Visit my Profile: / {data?.handleProfileAlias}
                         </Link>
 
                     </div>
 
-                        <p className="text-2xl text-center text-white">📌 {data?.handleProfileAlias}</p>
+                    <p className="text-2xl text-center text-white">📌 {data?.handleProfileAlias}</p>
 
-                        { data?.imageURL &&
-                            <img src={data?.imageURL} alt="Profile Image" className="mx-auto max-w-[250px]" />
-                        }
-
-
-                        <p className="mt-20 flex flex-col gap-5 text-slate-200" >{data?.description}</p>
+                    { data?.imageURL &&
+                        <img src={data?.imageURL} alt="Profile Image" className="mx-auto max-w-[250px]" />
+                    }
 
 
-                        <LinksInProfile data={data!}/>
+                    <p className="mt-2 flex flex-col gap-5 text-white p-3 bg-stone-700 rounded-lg" >{data?.description}</p>
 
 
+                    { data ? <LinksInProfile  data={data}/> : <p>No social data available</p> }
 
                 </div>
 
