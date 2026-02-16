@@ -1,5 +1,6 @@
 import { Outlet } from 'react-router-dom'
 import { Toaster } from 'react-hot-toast'
+import LogoDevTree from '../components/LogoDevTree'
 
 
 export default function AuthLayout () {
@@ -11,10 +12,10 @@ export default function AuthLayout () {
 
             <Toaster position="top-right"/>
 
-            <div className=' bg-slate-800 h-16 flex items-center'>
+            <div className=' bg-slate-800 h-18 flex items-center'>
 
                 <div className="max-w-7x1 mx-auto px-5 h-full flex items-center  justify-between gap-4">
-                    <img src="/myDevTree_Logo.jpg" alt="Logotipo MyDevTree" className="h-14" ></img>
+                    <LogoDevTree/>
                     <h1 className="text-white">Dev Tree web site</h1>
                 </div>
 
