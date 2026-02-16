@@ -1,7 +1,5 @@
 interface errorMessageComponentPropI {
-
     children: React.ReactNode
-
 }
 
 export function ErrorMessageComponent ( {children} : errorMessageComponentPropI ) {

@@ -9,6 +9,6 @@ export const errorsMessageObj = {
 
     notTheSamePassword: "The password are not the same" ,
 
-    invalidadFormatURL: "Unknown or incorrectly formatted URL"
+    invalidedFormatURL: "Unknown or incorrectly formatted URL"
 
 }
