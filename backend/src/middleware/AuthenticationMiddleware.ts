@@ -1,7 +1,5 @@
 import type { Request, Response, NextFunction } from "express"
 import { errorsMessagesObject } from "../sharedContent/messages/ErorrsMessages";
-import { sucessMessagesArray } from "../sharedContent/messages/SucessMessages";
-import { generateJWT } from "../authentications/jwt";
 import jwt, { JwtPayload } from "jsonwebtoken";
 import { mongooseUser, userI } from "../modelsToDB/UserModelCollection";
 
@@ -39,14 +37,11 @@ export const AuthenticationMiddleware = async ( req : Request , res : Response ,
         const result = jwt.verify( token , process.env.MAKE_IT_ALL ) as JwtPayload ;
 
 
-
-        const userInMemory = await mongooseUser.findById( result?.iD ).select('-password') ;
-
-
-        if( !userInMemory ) return res.status(401).json( { error: errorsMessagesObject.userNotExist } ) ;
+        const userInMemory = await mongooseUser.findById( result?.id ).select('-password') ;
 
 
-        //res.json( userInMemory ) ;
+        if( !userInMemory ) return res.status(401).json( { error: errorsMessagesObject.userNotExist.message } ) ;
+
 
         req.user = userInMemory ;   // banisters to handle getUser(req, res)
 

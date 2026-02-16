@@ -12,7 +12,7 @@ export async function ConnectToMyMongoDB () : Promise<void> {
 
         const localURLdB = `${connection.connection.host}: ${connection.connection.port}`
 
-        console.log( `\nMongoDB conectada en ${localURLdB}` )
+        console.log( `\nMongoDB connected in ${localURLdB}` )
 
     } catch (err) {
         

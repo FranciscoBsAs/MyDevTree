@@ -4,7 +4,6 @@ import { validationResult } from "express-validator"
 
 export const HandleInputErrors = ( req : Request , res : Response , nextFunction : NextFunction ) => {
 
-
     let errorsFromRouter_POST = validationResult( req ) ;
 
     if( !errorsFromRouter_POST.isEmpty() ) {
@@ -20,6 +19,5 @@ export const HandleInputErrors = ( req : Request , res : Response , nextFunction
 
     
     nextFunction() ;
-
 
 }
