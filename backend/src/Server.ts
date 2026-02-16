@@ -2,11 +2,9 @@ import express from 'express';
 import 'dotenv/config' ;
 import theRouter from './TheRouter';
 import { ConnectToMyMongoDB } from './connectionsConfig/MyDB';
-
 import cors from 'cors'
-
-
 import { CORSconfig } from './connectionsConfig/CorsConfig';
+
 
 const appServer = express() ;
 

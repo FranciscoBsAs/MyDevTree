@@ -19,8 +19,6 @@ export interface userI extends Document {
 
     links : string
 
-
-
 }
 
 
