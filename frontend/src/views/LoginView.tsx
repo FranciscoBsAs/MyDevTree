@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom' ;
+import { Link, useNavigate } from 'react-router-dom' ;
 import { useForm } from 'react-hook-form' ;
 import type { userLoginFrontI } from '../interfaces/UserInterfaces' ;
 import { ErrorMessageComponent } from '../components/ErrorMessageComponent' ;
@@ -6,7 +6,8 @@ import { errorsMessageObj } from '../sharedFrontContent/messagesArray/FrontError
 import { isAxiosError } from 'axios'
 import APIaxiosInstance from '../configConnection/AxiosInstance'
 import { toastService } from '../sharedFrontContent/alertToasts/ToastService';
-
+import './AuthStyle.css'
+import { thePathsRoutes } from '../routes/PathsRoutes';
 
 
 export default function LoginView () {
@@ -17,6 +18,7 @@ export default function LoginView () {
         password: ''
     }
 
+    const navigate = useNavigate() ;
 
     const { register, handleSubmit, formState:{errors}, reset } = useForm( { defaultValues: initialValues } )
 
@@ -28,13 +30,15 @@ export default function LoginView () {
             const {data} = await APIaxiosInstance.post(`/auth/login` , loginInputData)
 
 
-            toastService.success( data.sucessLogin ) ;
+            toastService.success( data.successLogin ) ;
 
 
             localStorage.setItem('AUTH_TOKEN', data.token ) ;
 
 
             reset() ;
+
+            navigate(thePathsRoutes.homeAdmin) ;
             
         } catch (error) {
 
@@ -47,11 +51,10 @@ export default function LoginView () {
 
     return(
 
-        <div>
+        <div className="w-full max-w-2xl mx-auto" >
+            
             <h2 className="text-4xl text-white font-bold">Login</h2>
             
-
-
             {/*form.bg-white.px-5.py-20.rounded-lg.space-y-10.mt-10[onSubmit={} noValidate=]>(div.grid.grid-cols-1.space-y-3>label.text-1xl.text-slate-500+input.bg-slate-100.border-none.p-2.rounded-lg.placeholder-slate-400[id=x type=x placeholder=x ]+{{errors.x && <ErrorMessageComponent></ErrorMessageComponent>}})*2 */}
 
             <div className="w-full max-w-2xl mx-auto">
@@ -112,14 +115,15 @@ export default function LoginView () {
 
 
             <nav className='mt-10' >
-                <Link to="/auth/register" >
-                    <button>
-                        Dont have a account already? Register
+                <Link to={thePathsRoutes.register} >
+                    <button className='btn-detail' >
+                        Don't have a account already? <span className='font-bold' >Register</span>
                     </button>
                 
                 </Link>
 
             </nav>
+            
         </div>
 
     )
