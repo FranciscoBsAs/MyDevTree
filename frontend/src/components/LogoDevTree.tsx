@@ -8,7 +8,7 @@ export default function LogoDevTree () {
 
         <Link to={thePathsRoutes.homeAdmin} >
 
-            <img src="/myDevTree_Logo.jpg" alt="Logotipo MyDevTree" className="h-20" ></img>
+            <img title="Go to the Home page" src="/myDevTree_Logo.jpg" alt="Logotipo MyDevTree" className="h-20 rounded-md" ></img>
 
         
         </Link>
