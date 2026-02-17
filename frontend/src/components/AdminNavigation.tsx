@@ -27,6 +27,7 @@ export default function AdminNavigation () {
         <button 
             className="bg-slate-700 p-3 text-xs w-full text-blue-100 rounded-lg font-bold cursor-pointer" 
             onClick={ logout }
+            title="Log out user session"
         >
             Log Out
         </button>
