@@ -37,7 +37,7 @@ export default function EnabledLinksRender ( {link} : enabledLinksRenderPropsI )
             {
                 logosPNG.includes(`${link.name.toLowerCase()}.png`) ? (
 
-                    <img src={`/social/icon_${link.name.toLowerCase()}.png`} alt={link.name} className="w-9 h-9 bg-cover" />
+                    <img src={`/social/icon_${link.name.toLowerCase()}.png`} alt={link.name} className="w-9 h-9 bg-cover rounded-full" />
 
                     
                 ) : (
@@ -51,7 +51,7 @@ export default function EnabledLinksRender ( {link} : enabledLinksRenderPropsI )
 
             }
 
-            <p>My <span className="font-bold" >{link.name}</span> </p>
+            <p title="Visit the social network" >My <span className="font-bold" >{link.name}</span> </p>
 
         </li>
     
