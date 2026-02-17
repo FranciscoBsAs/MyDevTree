@@ -75,12 +75,14 @@ export default function AppLayout () {
                     <div className="flex justify-end">
                         
                         <Link 
-                            className="font-bold text-right bg-slate-400 text-1xl" 
+                            className=" rounded-lg   bg-slate-400 text-1xl" 
                             to={`/${data?.handleProfileAlias}`} 
                             target="_blank" 
                             rel="noreferrer noopener"
                         >
-                            Visit my Profile: / {data?.handleProfileAlias}
+                            <p className="font-semibold text-center text-stone-800 p-2 flex" >
+                            Visit my Profile: /<span className="text-emerald-800  font-bold" >{data?.handleProfileAlias}</span>
+                            </p>
                         </Link>
 
                     </div>
@@ -88,7 +90,7 @@ export default function AppLayout () {
                     <p className="text-2xl text-center text-white">📌 {data?.handleProfileAlias}</p>
 
                     { data?.imageURL &&
-                        <img src={data?.imageURL} alt="Profile Image" className="mx-auto max-w-[250px]" />
+                        <img src={data?.imageURL} alt="Profile Image" className="mx-auto max-w-[250px] rounded-md" />
                     }
 
 
