@@ -14,9 +14,9 @@ export default function AuthLayout () {
 
             <div className=' bg-slate-800 h-18 flex items-center'>
 
-                <div className="max-w-7x1 mx-auto px-5 h-full flex items-center  justify-between gap-4">
+                <div className="max-w-7x1 mx-auto py-2 px-5 h-full flex items-center  justify-between gap-4">
                     <LogoDevTree/>
-                    <h1 className="text-white">Dev Tree web site</h1>
+                    <h1 className="text-white">DevTree web site</h1>
                 </div>
 
 
