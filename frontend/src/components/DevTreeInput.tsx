@@ -25,10 +25,10 @@ export default function DevTreeInput ( { item , handleUrlChangeProp , handleEnab
 
     return(
     
-        <div className="bg-slate-400 shadow-sm p-5 flex items-center gap-3  rounded-lg " >
+        <div className="bg-slate-400 shadow-lg p-3 flex items-center gap-3  rounded-lg " >
 
             <div 
-                className="w-12 h-12 bg-cover"
+                className="w-12 h-12 bg-cover rounded-full"
                 style={{ backgroundImage: iconImageDirections }}
                 
             >
@@ -53,8 +53,7 @@ export default function DevTreeInput ( { item , handleUrlChangeProp , handleEnab
                 onChange={handleChangeEnable}
                 className={ ClassNames( item.enabled  ?  'bg-green-700'  :  'bg-stone-500'  , 
                     'relative inline-flex h-6 w-11 flex-shirk-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-900 focus:ring-offset-2 '
-                )
-
+                    )
                 }
             >
                 <span
