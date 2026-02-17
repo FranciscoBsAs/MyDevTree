@@ -224,7 +224,7 @@ export default function LinkTreeView () {
 
 
                 <button
-                    className="bg-cyan-200 p-2 text-center text-lg w-full text-slate-700 rounded-lg font-bold "
+                    className="bg-cyan-600 p-2 text-center text-lg w-full text-slate-200 rounded-lg font-bold "
                     onClick={handleSaveChanges}
                 >
                     Save changes
