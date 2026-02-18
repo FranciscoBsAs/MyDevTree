@@ -62,7 +62,9 @@ export default function SearchForm () {
                 </div>
                 
 
-                {errors.handleProfileAlias && <ErrorMessageComponent>{errors.handleProfileAlias.message} </ErrorMessageComponent> }
+                
+                    {errors.handleProfileAlias && <ErrorMessageComponent>{errors.handleProfileAlias.message} </ErrorMessageComponent> }
+                
                 
 
                 <div className="mt-10" >
@@ -72,7 +74,7 @@ export default function SearchForm () {
                     { 
                         hpaMutation.error 
                         && 
-                        <p className="text-center text-red-700 font-black" >
+                        <p className="text-center text-red-700 font-black rounded-lg" >
                             {hpaMutation.error.message}
                         </p> 
                     }
@@ -80,20 +82,20 @@ export default function SearchForm () {
                     {
                         hpaMutation.data
                         &&
-                        <p className="text-center text-green-700 font-semibold" >
-                            <Link state={stateHandleProfileAlias} to={thePathsRoutes.register}>
-                                <p className="font-semibold text-center" >
-                                    
-                                    {hpaMutation.data.success } 
-                                    
-                                    <br/>
-                                    
-                                    <span className="text-cyan-500 font-semibold text-2xl " >Click to navigate to <span className="font-bold" >Register👆</span></span>
+                        
+                        <Link state={stateHandleProfileAlias} to={thePathsRoutes.register}>
+                            <h1 className="text-green-700 font-semibold text-center" >
                                 
-                                </p>                                     
+                                {hpaMutation.data.success } 
+                                
+                                <br/>
+                                
+                                <span className="text-cyan-500 font-semibold text-2xl " >Click to navigate to <span className="font-bold" >Register👆</span></span>
                             
-                            </Link> 
-                        </p>
+                            </h1>                                     
+                        
+                        </Link> 
+                        
                     }
 
                 </div>
