@@ -17,7 +17,7 @@ export const getUser_ConfigQuery : UseQueryOptions< userFrontI | undefined, Erro
 
     refetchOnWindowFocus: false,
 
-    enabled: !!localStorage.getItem('AUTH_TOKEN')
+    //enabled: !!localStorage.getItem('AUTH_TOKEN')
 
 }
 
