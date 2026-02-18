@@ -44,7 +44,7 @@ export default function DevTreeRender_Principal ( {data} : devTreeRenderPropsI )
 
                 <div className="w-full md:w-96 bg-slate-800 px-5 py-10 space-y-6">
 
-                    <div className="flex justify-end">
+                    <div className="flex justify-end  p-2 lg:px-4">
                         
                         <Link 
                             className=" rounded-lg   bg-slate-400 text-1xl" 
@@ -52,7 +52,7 @@ export default function DevTreeRender_Principal ( {data} : devTreeRenderPropsI )
                             target="_blank" 
                             rel="noreferrer noopener"
                         >
-                            <p className="font-semibold text-center text-stone-800 p-2 flex" >
+                            <p className="font-semibold text-center text-stone-800 flex p-2" >
                             Visit my Profile: /<span className="text-emerald-800  font-bold" >{data.handleProfileAlias}</span>
                             </p>
                         </Link>
