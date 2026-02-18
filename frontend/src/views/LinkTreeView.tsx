@@ -81,6 +81,9 @@ export default function LinkTreeView () {
         
         queryClient_Links.setQueryData(['user'], ( prevData : userFrontI ) =>{
 
+            //if(!prevData) return prevData ;   OJO con está linea para el drage n drop
+
+            
             const prevArr = JSON.parse( prevData.links ?? '[]') as socialI[]  ;
 
             const updatedArr = prevArr.map( (link) => {
