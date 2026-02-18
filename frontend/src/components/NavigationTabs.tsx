@@ -37,7 +37,7 @@ export default function NavigationTabs () {
 
     return (
         
-        <div className="mb-2">
+        <div className="mx-auto lg:py-2  px-5  lg:px-5 md:px-6">
 
 
             <div className="sm:hidden">
@@ -49,7 +49,7 @@ export default function NavigationTabs () {
                 <select
                     name="tabs"
                     id="tabs"
-                    className="block w-full rounded-md border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+                    className="block w-full rounded-md border-gray-300 focus:border-blue-500 focus:ring-blue-500 text-sm md:text-base"
                     onChange={ handleChange }
                 >
                     {tabs.map( (tab) => (
@@ -65,7 +65,7 @@ export default function NavigationTabs () {
 
             <div className="hidden sm:block">
 
-                <div className="border-b-4 border-slate-700">
+                <div className="border-b-2 py-0 border-slate-700">
 
                     <nav className="flex -mb-px space-x-8" aria-label="Tabs">
 
@@ -79,7 +79,7 @@ export default function NavigationTabs () {
                                                             ? 'border-blue-500'
                                                             :  'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'
                                         ,
-                                        'group inline-flex items-center border-b-2 py-4 px-1 text-xl'
+                                        'group inline-flex items-center border-b-2 py-2 px-1 text-xl md:py-2 md:px-2 lg:py-2 md:text-lg lg:text-xl '
                                     )
                                 }
                             >
