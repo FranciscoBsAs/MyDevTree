@@ -21,15 +21,17 @@ export default function Header () {
 
             <div className=" bg-slate-800 h-14 flex items-center" >
 
-                <div className="max-w-7x1 mx-auto px-5 h-full flex items-center justify-between gap-4">
+                <div className="max-w-8xl mx-auto px-5 h-full flex place-items-center justify-between lg:gap-5 md:gap-x-20 gap-x-10  ">
                     
                     <Link
-                        className=""
+                        //className="gap-9"
                         to={`/${data?.handleProfileAlias}`}
                         target="_blank"
                         rel="noreferrer noopener"
                     >
-                        <h1 title="View your profile" className="absolute cursor-pointer left-11 top-7 p-2 rounded-full font-bold text-xl bg-stone-600" >
+                        <h1 
+                            title="View your profile" 
+                            className="xl:-ml-80 2xl:-ml-40 w-12 h-11 rounded-full bg-stone-600 text-3xl font-bold flex items-start justify-start leading-none "                        >
                             🪪
                         </h1>
                     </Link>
