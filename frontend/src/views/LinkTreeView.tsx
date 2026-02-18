@@ -147,9 +147,6 @@ export default function LinkTreeView () {
 
 
         let updatedSocialItems : socialI[] = []  ;
-
-
-        const currentsLinks = updatedLinks.filter( link => link.enabled || link.url ) ;
         
 
         if( selectedSocialNetwork?.enabled ) {

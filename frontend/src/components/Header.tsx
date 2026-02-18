@@ -11,7 +11,7 @@ export default function Header () {
 
     const location = useLocation() ;
 
-    const { data, isLoading, isError } = useQuery( getUser_ConfigQuery ) ;
+    const { data } = useQuery( getUser_ConfigQuery ) ;
 
 
 

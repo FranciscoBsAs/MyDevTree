@@ -1,12 +1,6 @@
-import { Link, Outlet } from "react-router-dom" ;
-import { Toaster } from "react-hot-toast";
-import NavigationTabs from "../components/NavigationTabs";
 import { useQuery } from '@tanstack/react-query' ;
 import { Navigate } from "react-router-dom";
 import { getUser_ConfigQuery } from "../assets/UserQueryConfig";
-import LinksInProfile from "../components/LinksInProfile";
-import Header from "../components/Header";
-import { useEffect, useState } from "react";
 import { thePathsRoutes } from "../routes/PathsRoutes";
 import DevTreeRender_Principal from "../components/DevTreeRender_Principal";
 
