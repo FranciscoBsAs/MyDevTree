@@ -80,8 +80,19 @@ export default function SearchForm () {
                     {
                         hpaMutation.data
                         &&
-                        <p className="text-center text-green-700 font-black" >
-                            {hpaMutation.data.success } <br/> <span className="text-cyan-400" >Click to navigate to <Link state={stateHandleProfileAlias} to={thePathsRoutes.register}>Register</Link> </span>
+                        <p className="text-center text-green-700 font-semibold" >
+                            <Link state={stateHandleProfileAlias} to={thePathsRoutes.register}>
+                                <p className="font-semibold text-center" >
+                                    
+                                    {hpaMutation.data.success } 
+                                    
+                                    <br/>
+                                    
+                                    <span className="text-cyan-500 font-semibold text-2xl " >Click to navigate to <span className="font-bold" >Register👆</span></span>
+                                
+                                </p>                                     
+                            
+                            </Link> 
                         </p>
                     }
 
