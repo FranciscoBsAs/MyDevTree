@@ -50,7 +50,7 @@ export default function SearchForm () {
 
                 <div className="flex items-center gap-2">
 
-                    <label className="text-1xl text-slate-500" htmlFor="handleProfileAlias">devTree.com/</label>
+                    <label className="text-1xl text-slate-500" htmlFor="handleProfileAlias">devtree-ftc.com/</label>
 
                     <input 
                         type="text" 

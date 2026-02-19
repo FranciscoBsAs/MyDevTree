@@ -8,6 +8,15 @@ export async function GetUserFetching () {
 
     const token : string | null = localStorage.getItem( 'AUTH_TOKEN' )
 
+
+
+
+    if( !token ) throw new Error('UNAUTHORIZED_NO_TOKEN')
+
+
+
+
+
     try {
         
         const { data } = await APIaxiosInstance.get<userFrontI>( '/admin/profile' )
@@ -24,6 +33,7 @@ export async function GetUserFetching () {
 
         }
 
+        throw new Error("NETWORK_OR_UNKNOWN_ERROR")
     }
 
 }
