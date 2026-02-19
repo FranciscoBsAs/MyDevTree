@@ -10,9 +10,7 @@ export interface userFrontI {
 
 
 export interface userRegisterFrontI extends userFrontI {
-
     password_confirmation : string
-
 }
 
 
