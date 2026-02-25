@@ -27,6 +27,10 @@ export default function SearchForm () {
 
     const stateHandleProfileAlias = {
         handleProfileAlias: slugify(inputHandleProfileAlias, {delimiter: '_'})
+            .replace(/[^a-z0-9_-]+/gi, "_")
+            .replace(/_+/g, "_")
+            .replace(/^_+|_+$/g, "")
+        
     }
 
 
