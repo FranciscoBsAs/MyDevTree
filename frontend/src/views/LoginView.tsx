@@ -91,7 +91,7 @@ export default function LoginView () {
                         <label htmlFor="password" className="text-1xl text-slate-500">Password</label>
                     
                         <input 
-                            type="text" 
+                            type="password" 
                             className="bg-slate-100 border-none p-2 rounded-lg placeholder-slate-400" 
                             id="password" 
                             placeholder="password" 
