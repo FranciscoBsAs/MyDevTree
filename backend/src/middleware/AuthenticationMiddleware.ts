@@ -19,7 +19,6 @@ declare global {
 }
 
 
-
 export const AuthenticationMiddleware = async ( req : Request , res : Response , nextFunction : NextFunction ) => {
 
     const bearer = req.headers.authorization ;
