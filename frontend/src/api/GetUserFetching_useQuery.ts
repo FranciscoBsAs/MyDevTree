@@ -8,13 +8,7 @@ export async function GetUserFetching () {
 
     const token : string | null = localStorage.getItem( 'AUTH_TOKEN' )
 
-
-
-
     if( !token ) throw new Error('UNAUTHORIZED_NO_TOKEN')
-
-
-
 
 
     try {
