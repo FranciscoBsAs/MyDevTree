@@ -42,7 +42,7 @@ export default function DevTreeRender_Principal ( {data} : devTreeRenderPropsI )
                     <Outlet/>
                 </div>
 
-                <div className="w-full md:w-96 bg-slate-800 px-5 py-10 space-y-6">
+                <div className="w-full md:w-96 bg-slate-800 rounded-lg px-3 py-4 space-y-6      lg:w-[400px] lg:shrink-0">
 
                     <div className="flex justify-end  p-2 lg:px-4">
                         
@@ -66,7 +66,7 @@ export default function DevTreeRender_Principal ( {data} : devTreeRenderPropsI )
                         && 
                         data.imageURL.trim() !== ""
                         && 
-                        <img src={data.imageURL} alt="Profile Image" className="mx-auto max-w-[250px] rounded-md" />
+                        <img src={data.imageURL} alt="Profile Image" className="mx-auto max-w-[250px] max-h-[160px] rounded-md" />
                     }
                     
 
