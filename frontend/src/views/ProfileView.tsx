@@ -6,8 +6,6 @@ import { useQueryClient, useMutation } from '@tanstack/react-query' ;
 import {  uploadImage_useMutationConfig, useMutation_ConfigQuery } from "../assets/UserQueryConfig";
 
 
-
-
 export default function ProfileView () {
 
 
@@ -46,14 +44,6 @@ export default function ProfileView () {
 
     const handleUserProfileAlias_Form = ( formData : userEditFrontI ) => {
 
-        /*
-        const currentData = queryClient.getQueryData<userFrontI>(['user']) ;
-
-
-        if( currentData?.links ) formData.links = currentData.links ;
-
-        */
-
 
         if(data && data.links) formData.links = data.links ;
         
@@ -83,6 +73,7 @@ export default function ProfileView () {
                     <div className="grid grid-cols-1 gap-2    ">
                         <label htmlFor="handleProfileAlias" className='font-semibold'>Handle Profile Alias</label>
                         <input
+                            id='handleProfileAlias'
                             type="text"
                             className="border-none bg-slate-100 rounded-lg p-2 shadow-lg  placeholder-slate-400 "
                             placeholder="handle profile alias or user name"
@@ -104,8 +95,17 @@ export default function ProfileView () {
                             id="description"
                             className="border-none bg-slate-100 rounded-lg p-2 shadow-lg placeholder-slate-400"
                             placeholder="Your description"
-                            {...register( 'description' )}
+                            maxLength={351}
+                            {...register( 'description', {
+                                maxLength: {
+                                    value: 350,
+                                    message: errorsMessageObj.maxLengthDescription
+                                }
+                            } ) }
                         ></textarea>
+
+                        { errors.description && ( <ErrorMessageComponent> {errors.description.message} </ErrorMessageComponent> ) }
+
                     </div>
 
 
@@ -114,7 +114,7 @@ export default function ProfileView () {
                         <input
                             type="file"
                             className="border-none bg-slate-100 rounded-lg p-2 shadow-lg  placeholder-slate-400"
-                            id="image"
+                            id="imageURL"
                             name="handle"
                             accept="image/*"
                             onChange={ handleUploadImage }

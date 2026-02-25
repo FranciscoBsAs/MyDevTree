@@ -9,6 +9,8 @@ export const errorsMessageObj = {
 
     notTheSamePassword: "The password are not the same" ,
 
-    invalidedFormatURL: "Unknown or incorrectly formatted URL"
+    invalidedFormatURL: "Unknown or incorrectly formatted URL",
+
+    maxLengthDescription: "The description cannot exceed 350 characters"
 
 }
