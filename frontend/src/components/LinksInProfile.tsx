@@ -87,7 +87,7 @@ export default function LinksInProfile ( {data} : linksInProfilePropsI ) {
                 onDragEnd={handleDragEnd}
             >
 
-            <div className='mt-20 flex flex-col gap-5' >
+            <div className='mt-10 flex flex-col gap-5' >
 
                 <SortableContext
                     items={handleItemsSortableContext()}
