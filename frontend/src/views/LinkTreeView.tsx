@@ -207,8 +207,6 @@ export default function LinkTreeView () {
     
         <div>
 
-
-
             <div className="space-y-5">
 
                 { devTreeLinks.map( ( item ) : JSX.Element => (
