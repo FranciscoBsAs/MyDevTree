@@ -1,0 +1,187 @@
+import { useLocation, useNavigate } from "react-router-dom" ;
+import { useForm } from "react-hook-form";
+import { ErrorMessageComponent } from "../components/ErrorMessageComponent";
+import type { userRegisterFrontI } from "../interfaces/UserInterfaces";
+import { errorsMessageObj } from "../sharedFrontContent/messagesArray/FrontErrorsMessages";
+import { isAxiosError } from "axios";
+import { toastService } from "../sharedFrontContent/alertToasts/ToastService";
+import APIaxiosInstance from "../configConnection/AxiosInstance";
+import { thePathsRoutes } from "../routes/PathsRoutes";
+
+
+export default function RegisterComponent () {
+
+
+    const location = useLocation() ;
+
+    const navigate = useNavigate() ;
+
+    const hpaFromStateFather : string | undefined = location?.state?.handleProfileAlias 
+
+    const initialValues : userRegisterFrontI = {
+    name: '',
+    email: '',
+    handleProfileAlias: hpaFromStateFather || '',
+    password: '',
+    password_confirmation: '',
+    description: '',
+    imageURL: ''
+  }
+
+
+    const { register, watch, handleSubmit, formState: {errors}, reset } = useForm< userRegisterFrontI >( { defaultValues: initialValues } ) ;
+
+
+
+    const inputPassword : string = watch('password') ;
+
+
+    const handleRegister = async ( inputFormData : userRegisterFrontI ) => {
+
+        try {
+
+        const {data} = await APIaxiosInstance.post(`/auth/register`, inputFormData ) ;
+
+        if(data) toastService.success( data.messageSuccess ) ;
+
+        reset() ;
+
+        navigate(thePathsRoutes.login) ;
+        
+        } catch (theError) {
+
+            if( isAxiosError(theError) && theError.response ) toastService.error( theError.response.data.error ) ;
+
+        }
+
+    }
+
+
+    return(
+    
+        <form
+            onSubmit={handleSubmit(handleRegister)}
+            className=" bg-white
+                        px-5 py-5
+                        rounded-lg
+                        space-y-5
+                        mt-2
+            "
+        >
+
+            {/*(div.grid.grid-cols-1.space-y-3>label.text-1xl.text-slate-500+input.bg-slate-100.border-none.p-2.rounded-lg.placeholder-slate-400[id=x type=text placeholder=x])*5 */}
+
+            <div className="grid grid-cols-1 space-y-3">
+
+                <label htmlFor="name" className="text-1xl text-slate-500">Name</label>
+
+                <input
+                    type="text"
+                    className="bg-slate-100 border-none p-2 rounded-lg placeholder-slate-400"
+                    id="name"
+                    placeholder="Name"
+                    {...register( 'name', {
+                        required: errorsMessageObj.required('name')
+                    } )}
+                />
+
+                { errors.name && <ErrorMessageComponent> { errors.name.message } </ErrorMessageComponent> }
+        
+            </div>
+
+
+            <div className="grid grid-cols-1 space-y-3">
+
+                <label htmlFor="email" className="text-1xl text-slate-500">Email</label>
+
+                <input
+                    type="email"
+                    className="bg-slate-100 border-none p-2 rounded-lg placeholder-slate-400"
+                    id="email"
+                    placeholder="Email"
+                    { ...register( 'email', {
+                        required: errorsMessageObj.required('email'),
+                        pattern: {
+                            value: /\S+@\S+\.\S+/,
+                            message: errorsMessageObj.format
+                        }
+                    } ) }
+                />
+
+                { errors.email && <ErrorMessageComponent> { errors.email.message } </ErrorMessageComponent> }
+
+            </div>
+
+
+            <div className="grid grid-cols-1 space-y-3">
+
+                <label htmlFor="handleProfileAlias" className="text-1xl text-slate-500">Handle Profile Alias</label>
+
+                <input
+                    type="text"
+                    className="bg-slate-100 border-none p-2 rounded-lg placeholder-slate-400"
+                    id="handleProfileAlias"
+                    placeholder="A user profile alias for the URLs | NoSpacesAllowed"
+                    {...register( 'handleProfileAlias' , {
+                        required: errorsMessageObj.required('handle profile alias')
+                    } ) }
+                />
+
+                { errors.handleProfileAlias && <ErrorMessageComponent> { errors.handleProfileAlias.message } </ErrorMessageComponent> }
+            
+            </div>
+
+
+            <div className="grid grid-cols-1 space-y-3">
+
+                <label htmlFor="password" className="text-1xl text-slate-500">Password</label>
+
+                <input
+                    type="text"
+                    className="bg-slate-100 border-none p-2 rounded-lg placeholder-slate-400"
+                    id="password"
+                    placeholder="Password"
+                    { ...register( 'password', {
+                        required: errorsMessageObj.required('password')
+                    } ) }
+                />
+
+                { errors.password && <ErrorMessageComponent> {errors.password.message} </ErrorMessageComponent> }
+
+            </div>
+
+
+            <div className="grid grid-cols-1 space-y-3">
+
+                <label htmlFor="password_confirmation" className="text-1xl text-slate-500">
+                    Password Confirmation
+                </label>
+
+                <input
+                    type="text"
+                    className="bg-slate-100 border-none p-2 rounded-lg placeholder-slate-400"
+                    id="password_confirmation"
+                    placeholder="Password"
+                    { ...register( 'password_confirmation', {
+                        
+                        required: errorsMessageObj.required('password confirmation'),
+                        validate: (inputValue) => (
+                        inputValue === inputPassword 
+                                    ? true 
+                                    : errorsMessageObj.notTheSamePassword
+                        )
+                    } ) }
+                />
+
+                { errors.password_confirmation && <ErrorMessageComponent> { errors.password_confirmation?.message } </ErrorMessageComponent> }
+        
+            </div>
+
+
+            <input type="submit" className="bg-cyan-700 p-3 text-lg w-full text-slate-200 rounded-lg font-bold cursor-pointer" value="Make a account" />
+    
+
+        </form>
+    
+    )
+}
