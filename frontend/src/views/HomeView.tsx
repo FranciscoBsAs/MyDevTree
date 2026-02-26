@@ -13,8 +13,8 @@ export default function HomeView () {
                             lg:bg-homeView-style-devTree bg-no-repeat bg-right-top bg-homeView-xl"
             >
 
-{/* div.max-w-5xl.mx-auto.mt-10>(div.lg:w-1/2.px-10.lg:p-0.space-y-6>h1.text-6xl.font-black>({All yours }span.text-cyan-400>{Social Networks })+{in one enlace})
-*/}
+            {/* div.max-w-5xl.mx-auto.mt-10>(div.lg:w-1/2.px-10.lg:p-0.space-y-6>h1.text-6xl.font-black>({All yours }span.text-cyan-400>{Social Networks })+{in one enlace})
+            */}
                 <div className="max-w-5xl mx-auto mt-10">
 
                     <div className="lg:w-1/2 px-10 lg:p-0 space-y-6">
