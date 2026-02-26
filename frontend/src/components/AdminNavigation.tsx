@@ -1,21 +1,26 @@
 import { useQueryClient } from "@tanstack/react-query"
+import { useNavigate } from "react-router-dom";
+import { thePathsRoutes } from "../routes/PathsRoutes";
 
 
 export default function AdminNavigation () {
 
     const queryClient = useQueryClient() ;
 
+    const navigate = useNavigate() ;
 
     const logout = () => {
 
         localStorage.removeItem('AUTH_TOKEN') ;
     
 
-        queryClient.invalidateQueries( { queryKey: ['user'] } ) ;
+        //queryClient.invalidateQueries( { queryKey: ['user'] } ) ;
+
+        queryClient.removeQueries( {queryKey: ["user"]} )
 
 
-
-        //navigate(thePathsRoutes.initial)
+        setTimeout( () =>  navigate(thePathsRoutes.initial, {replace: true} ), 600 ) ;
+        
     }
 
 
